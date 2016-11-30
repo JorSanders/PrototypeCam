@@ -1,0 +1,125 @@
+.Page{
+    vertical-align: top;
+    background-color: #F9F3D8;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    width: 100%;
+}
+
+.Header { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30%;
+    width: 100%;
+}
+
+.HeaderImage { 
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 70%;
+    width: 100%;
+    background-image: url("/PrototypeCam/images/HeaderBackground.jpg");
+    background-size: 100% 100%;
+}
+
+.Menu {
+    border-style: solid;
+    border-color: #0488A3;
+    border-right: 0;
+    border-left: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 30%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+.LeftHalf {
+    position: relative;
+    left: 0;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.RightHalf {
+    position: relative;
+    right: 0;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.MenuItem {
+    position: relative;
+    top:0;    
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+#MenuLogo {  
+    display: inline;
+    border-width: 0;
+    top: -75%;
+}
+
+.Content{
+    position: fixed;
+    top: 40%;
+    height: 60%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#Centered{    
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.InputItem{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 7px;
+    width: 400px;
+}
+
+.ListCatagory{
+    position: relative;
+    width: 20%;
+    background-color: white;
+    border-style: dotted;
+    border-width: 2px;
+    height: 100%;
+}
+
+.Title{
+    text-align: center;
+    padding: 10px;
+}
+
+.BottomLine{
+    position: relative;
+    border-bottom: 2px solid;
+    border-color: blue;
+    bottom: 0;
+    top: 0;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+}
