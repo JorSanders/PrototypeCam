@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="/PrototypeCam/style/style.css">
         <meta charset="UTF-8">
         <title>Overzicht</title>
     </head>
@@ -15,11 +15,14 @@
                     <div class="Title">
                         Nieuwe meldingen
                     </div>
-                    <div class="BottomLine"></div>
-                     content
+                    <div class="BottomLine"> 
+                    </div>
+                    <div class>
+                        content
+                    </div>
                 </div>
-                
-                
+
+
                 <div class="ListCatagory">
                     <div class="Title">
                         Nieuwe meldingen
@@ -27,14 +30,15 @@
                     <div class="BottomLine"></div>
                     test
                 </div>
+                
                 <div class="ListCatagory">
-                    test
+                    Er word nog getest
                 </div>
                 <div class="ListCatagory">
                     test
                 </div>
-                
-                
+
+
             </div>
     </body>
 </html>
