@@ -17,25 +17,45 @@
                     </div>
                     <div class="BottomLine"> 
                     </div>
-                    <div class>
-                        content
+                    <div class="IncidentItem">
+                        <div class="IncidentTitle">
+                            verwarming kapot
+                        </div>
+                        <div class="IncidentLocation">
+                            Kamer 2.48 10-11-2016
+                        </div>
+                    </div>
+                    <div class="IncidentItem">
+                        <div class="IncidentTitle">
+                            verwarming kapot
+                        </div>
+                        <div class="IncidentLocation">
+                            Kamer 2.48 10-11-2016
+                        </div>
                     </div>
                 </div>
 
 
                 <div class="ListCatagory">
                     <div class="Title">
-                        Nieuwe meldingen
+                        Melding
                     </div>
                     <div class="BottomLine"></div>
                     test
                 </div>
                 
                 <div class="ListCatagory">
-                    Er word nog getest
+                    <div class="Title">
+                        Bezig
+                    </div>
+                    <div class="BottomLine"></div>
                 </div>
+                
                 <div class="ListCatagory">
-                    test
+                    <div class="Title">
+                        Afgerond
+                    </div>
+                    <div class="BottomLine"></div>
                 </div>
 
 

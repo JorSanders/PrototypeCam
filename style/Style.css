@@ -103,13 +103,12 @@
     position: relative;
     width: 20%;
     background-color: white;
-    border-style: dotted;
     border-width: 2px;
     height: 100%;
 }
 
 .Title{
-    color:blue;
+    color:#0488A3;
     text-align: center;
     padding: 10px;
 }
@@ -117,10 +116,33 @@
 .BottomLine{
     position: relative;
     border-bottom: 2px solid;
-    border-color: blue;
+    border-color: #0488A3;
     bottom: 0;
     top: 0;
     left: 10%;
     right: 90%;
     width: 80%;
+}
+
+.IncidentItem{
+    position: relative;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3; 
+    top: 10px;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+.IncidentTitle{
+    color:#0488A3;
+    text-align: center;  
+}
+
+.IncidentLocation{
+    position: relative;
+    color:#6B737F;
+    left: 10px;
 }
