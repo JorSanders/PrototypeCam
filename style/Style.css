@@ -1,3 +1,27 @@
+div {
+    border: solid 1px black;
+}
+
+#header{
+    border:solid 1px;
+    //height:120px;
+    padding:5px; 
+}
+
+#content{
+    background-color: #F9F3D8;
+}
+
+#footer {
+    border-top: solid 5px #ffffff;
+    height: 50px;
+    text-align:center;
+    color:#000000;
+    background-size: 75px;
+
+
+
+
 .Page{
     vertical-align: top;
     background-color: #F9F3D8;
