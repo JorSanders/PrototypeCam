@@ -6,7 +6,7 @@ $menuLeft = array(
 $menuRight = array(
     array("Statistieken", "index.php"),
     array("Gebruikers", "index.php"),
-    array("Archief", "index.php")
+    array("test", "test.php")
 );
 ?>
 <div class="Header"> 
