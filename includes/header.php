@@ -21,8 +21,8 @@
         <title> Witchidents </title>
 
         <!-- Bootstrap -->
-        <link href="/Source Files/library/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <link href="/Source Files/library/bootstrap/font-awesome.min.css" rel="stylesheet">
+        <link href="/PrototypeCam/library/Bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="/PrototypeCam/library/Bootstrap/font-awesome.min.css" rel="stylesheet">
         <link href="../style/Style.css" rel="stylesheet">
 
 
@@ -37,20 +37,21 @@
     </head>
 
     <body>
-        <div id="header" class="row"><br>
-
-            header
-        </div>
-        <div id="menu" class="row">
-            <div class="col-md-4">
-                menu left
+       
+        <div class="container">  
+            <div id="header" class="row"><br>
+                Header
             </div>
-            <div class="col-md-4">
-                Logo
+            <div id="menu" class="row">
+                <div id="menuLeft" class="col-md-5">
+                    Menu left
+                </div>
+                <div id="logo" class="col-md-2">
+                  
+                </div>
+                <div id="menuRight" class="col-md-5">
+                    Menu right
+                </div>
             </div>
-            <div class="col-md-4">
-                Menu right
-            </div>
-        </div>
-        <div id="content">
+            <div id="background" class="row" >
 
