@@ -26,7 +26,7 @@ $menuRight = array(
         </div>
 
         <div id='MenuLogo' class='MenuItem'>
-            <img src="/PrototypeCam/images/flag_Witchidents_logo.png">
+            
         </div> 
 
         <div class="RightHalf">
