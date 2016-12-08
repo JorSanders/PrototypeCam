@@ -133,6 +133,54 @@
     border-radius: 25px;
     border-color: #0488A3;
     border-right: 10px solid;
+    border-right-color: #0488A3;
+    background-color: #FCFAF3;
+    top: 10px;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+    margin-bottom: 5px;
+    padding: 1%;
+}
+
+.IncidentItem1{
+    position: relative;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    border-right: 10px solid;
+    border-right-color: green;
+    background-color: #FCFAF3;
+    top: 10px;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+    margin-bottom: 5px;
+    padding: 1%;
+}
+
+.IncidentItem2{
+    position: relative;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    border-right: 10px solid;
+    border-right-color: orange;
+    background-color: #FCFAF3;
+    top: 10px;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+    margin-bottom: 5px;
+    padding: 1%;
+}
+
+.IncidentItem3{
+    position: relative;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    border-right: 10px solid;
     border-right-color: red;
     background-color: #FCFAF3;
     top: 10px;
@@ -143,11 +191,8 @@
     padding: 1%;
 }
 
-.IncidentItem div {
-    width:100%;
-}
-    
-.IncidentItem .IncidentTitle {
+
+.IncidentTitle {
     background-color:#FCFAF3;
     margin-top: 2px;
     margin-left: 5px;
@@ -159,7 +204,7 @@
 
 }
 
-.IncidentItem .IncidentDescription {
+.IncidentDescription {
     display: none;
     padding : 5px;
 }
