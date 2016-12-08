@@ -1,9 +1,12 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$menu = array(
+    array("Home", "index.php"),
+    array("Overzichten", "list.php"),
+
+    array("Statistieken", "index.php"),
+    array("Gebruikers", "index.php"),
+    array("Archief", "index.php")
+);
 ?>
 
 <!DOCTYPE html>
@@ -38,46 +41,68 @@
 
     <body>
 
-        <div class="container">  
-            <div id="header" class="row"><br>
-                Header
-            </div>
-            <div id="menu" class="row">
-                <div id="menuLeft" class="col-md-5">
-                    Menu left
-                </div>
-                <div id="logo" class="col-md-2">
+        <div class="container-fluid">  
+
+            <div id="header" class="row">
+
+                <div id="logo"class="col-md-4">
 
                 </div>
-                <div id="menuRight" class="col-md-5">
-                    Menu right
+              <div id="logo" class="col-md-4">
+                    <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
+                </div>
+                <div id="logo"class="col-md-4">
+
                 </div>
             </div>
+
+            <!-- Het menu -->
+
+            <div id="menu" class="row">
+                <div  class="col-md-12">
+                    
+                    <div class="col-md-1">
+
+                </div>
+                    
+                    <?php
+                    foreach ($menu as $menuItem) {
+                        echo" <div   class='col-md-2'>
+                    <a href='$menuItem[1]'>$menuItem[0]</a>
+                </div>    ";
+                    }
+                    ?>
+                    <div class="col-md-1">
+
+                </div>
+                </div>
+            </div>
+
             <div id="background" class="row" >
 
-
-               
-
                 <div id="content" class="col-md-12" >
-                    content<br>
-                    <div class="col-md-3" >
-                        a-test div 4 kolommen breed
-                    </div>
-                    <div class="col-md-3" >
-                        b-test div 4 kolommen breed
-                    </div>
-                    <div class="col-md-3" >
-                        c-test div 4 kolommen breed
-                    </div>
-                    <div class="col-md-3" >
-                        D-test div 4 kolommen breed
-                    </div>
+
+                    <!--   content<br>
+                       <div class="col-md-3" >
+                           a-test div 3 kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           b-test div  kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           c-test div  kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           D-test div 3 kolommen breed
+                       </div>-->
                 </div>
 
             </div>
+            
             <div id="footer">
                 Dit is de footer.
             </div>
+
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
