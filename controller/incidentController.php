@@ -1,16 +1,22 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\database\queryManager.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\incidentClass.php";
+
 class IncidentController {
 
-    public function __construct() {
+    private $queryManager;
+    
+    public function __construct() {        
+        $this->queryManager = new QueryManager;
 
-        require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\incidentClass.php";
-        $this->createIncident();
     }
-
-    public function createIncident() {
-        $incident = new Incident();
+    
+    public function selectAllUsers(){
+        $colomnNames = array ("Firstname", "Surname");
+        $tableName = "user";
+                
+        return ( $this->queryManager->select($colomnNames, $tableName));
     }
 
 }
-

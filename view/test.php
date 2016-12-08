@@ -5,11 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once "menu.php";
-
-include_once $_SERVER['DOCUMENT_ROOT']."\PrototypeCam\controller\incidentController.php";
-
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\incidentController.php";
 
 $incidentController = new IncidentController();
 
-$incidentController->createIncident();
+$allUsers = $incidentController->selectAllUsers();
+
+print_r ($allUsers);
