@@ -4,7 +4,7 @@ $menuLeft = array(
     array("Overzichten", "list.php")
 );
 $menuRight = array(
-    array("Statistieken", "index.php"),
+    array("Statistieken", "Statistics.php"),
     array("Gebruikers", "index.php"),
     array("Archief", "index.php")
 );

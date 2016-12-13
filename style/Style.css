@@ -99,6 +99,28 @@
     width: 400px;
 }
 
+.MenuCategory{
+    position: relative;
+    top: -5%;
+    width: 6%;
+    height: 100%;
+    padding: 3px;
+}
+
+.TitleCetegory{
+    position: relative;
+    background-color: #0488A3;
+    left: 15%;
+    width: 50%;
+    border-width: 2px;
+    height: 46%;
+    border-radius: 25px;
+    word-wrap: break-word;
+    font-size: 130%;
+    padding: 3px;
+}
+
+
 .ListCatagory{
     position: relative;
     width: 20%;
@@ -207,4 +229,13 @@
 .IncidentDescription {
     display: none;
     padding : 5px;
+}
+
+.Statistic {
+    position: fixed;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    width: 500px;
+    height: 250px;
 }
