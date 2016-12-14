@@ -10,7 +10,7 @@ $menu = array(
 ?>
 
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" style="height:100%;">
 
     <head>
 
@@ -39,9 +39,9 @@ $menu = array(
         <![endif]-->
     </head>
 
-    <body>
+    <body style="height:100%;">
 
-        <div class="container-fluid">  
+        <div style="height:100%;" class="container-fluid"  >  
 
             <div id="header" class="row">
 
@@ -78,23 +78,11 @@ $menu = array(
                 </div>
             </div>
 
-            <div id="background" class="row" >
+            <div style="height:100%;" id="background"  class="row" >
 
-                <div id="content" class="col-md-12" >
+                <div style="height:100%;" id="content" class="col-md-12">
 
-                    <!--   content<br>
-                       <div class="col-md-3" >
-                           a-test div 3 kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           b-test div  kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           c-test div  kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           D-test div 3 kolommen breed
-                       </div>-->
+
                 </div>
 
             </div>
