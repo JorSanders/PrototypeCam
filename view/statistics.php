@@ -36,6 +36,9 @@ $menu = array(
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         
         <![endif]-->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
     </head>
 
     <body>
@@ -81,23 +84,59 @@ $menu = array(
 
                 <div id="content" class="col-md-12" >
 
-                    <div class="col-md-4" >
 
+                    <div class="col-md-1" >
+                        a-test div 1 kolommen breed
                     </div>
-                    <div class="col-md-4" id="NewReport">
-                        <br><br><br><br> 
-                        <!-- Het meldingsformulier -->
-                        <form action="" method="POST">
-                            <input class="form-control input-sm" type="text" placeholder="Onderwerp"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Locatie"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Beschrijving"> <br>
-                            <input class="form-control input-sm" type="file" placeholder="Upload foto"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Email"> <br>
-                            <input class="btn btn-default btn-sm" type="submit">
-                        </form>
-                    </div>
-                    <div class="col-md-4" >
+                    <div class="col-md-11" >
+                        b-test div 11 kolommen breed
+                        
+                        
+                        
+                        
+                        <!--Test statistiek met bootstrap 
+                        
+                        <canvas id="myChart" width="500" height="250"></canvas>
 
+                  <script>
+                      var ctx = document.getElementById("myChart");
+                      var myChart = new Chart(ctx, {
+                          type: 'bar',
+                          data: {
+                              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                              datasets: [{
+                                      label: '# of Votes',
+                                      data: [12, 19, 3, 5, 2, 3],
+                                      backgroundColor: [
+                                          'rgba(255, 99, 132, 0.2)',
+                                          'rgba(54, 162, 235, 0.2)',
+                                          'rgba(255, 206, 86, 0.2)',
+                                          'rgba(75, 192, 192, 0.2)',
+                                          'rgba(153, 102, 255, 0.2)',
+                                          'rgba(255, 159, 64, 0.2)'
+                                      ],
+                                      borderColor: [
+                                          'rgba(255,99,132,1)',
+                                          'rgba(54, 162, 235, 1)',
+                                          'rgba(255, 206, 86, 1)',
+                                          'rgba(75, 192, 192, 1)',
+                                          'rgba(153, 102, 255, 1)',
+                                          'rgba(255, 159, 64, 1)'
+                                      ],
+                                      borderWidth: 1
+                                  }]
+                          },
+                          options: {
+                              scales: {
+                                  yAxes: [{
+                                          ticks: {
+                                              beginAtZero: true
+                                          }
+                                      }]
+                              }
+                          }
+                      });
+                  </script>-->
                     </div>
 
                 </div>
