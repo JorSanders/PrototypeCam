@@ -2,9 +2,10 @@
 $menu = array(
     array("Home", "index.php"),
     array("Overzichten", "list.php"),
-    array("Statistieken", "statistics.php"),
-    array("Gebruikers", "users.php"),
-    array("Archief", "archive.php")
+
+    array("Statistieken", "index.php"),
+    array("Gebruikers", "index.php"),
+    array("Archief", "index.php")
 );
 ?>
 
@@ -47,7 +48,7 @@ $menu = array(
                 <div id="logo"class="col-md-4">
 
                 </div>
-                <div id="logo" class="col-md-4">
+              <div id="logo" class="col-md-4">
                     <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
                 </div>
                 <div id="logo"class="col-md-4">
@@ -59,11 +60,11 @@ $menu = array(
 
             <div id="menu" class="row">
                 <div  class="col-md-12">
-
+                    
                     <div class="col-md-1">
 
-                    </div>
-
+                </div>
+                    
                     <?php
                     foreach ($menu as $menuItem) {
                         echo" <div   class='col-md-2'>
@@ -73,7 +74,7 @@ $menu = array(
                     ?>
                     <div class="col-md-1">
 
-                    </div>
+                </div>
                 </div>
             </div>
 
@@ -81,29 +82,23 @@ $menu = array(
 
                 <div id="content" class="col-md-12" >
 
-                    <div class="col-md-4" >
-
-                    </div>
-                    <div class="col-md-4" id="NewReport">
-                        <br><br><br><br> 
-                        <!-- Het meldingsformulier -->
-                        <form action="" method="POST">
-                            <input class="form-control input-sm" type="text" placeholder="Onderwerp"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Locatie"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Beschrijving"> <br>
-                            <input class="form-control input-sm" type="file" placeholder="Upload foto"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Email"> <br>
-                            <input class="btn btn-default btn-sm" type="submit">
-                        </form>
-                    </div>
-                    <div class="col-md-4" >
-
-                    </div>
-
+                    <!--   content<br>
+                       <div class="col-md-3" >
+                           a-test div 3 kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           b-test div  kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           c-test div  kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           D-test div 3 kolommen breed
+                       </div>-->
                 </div>
 
             </div>
-
+            
             <div id="footer">
                 Dit is de footer.
             </div>

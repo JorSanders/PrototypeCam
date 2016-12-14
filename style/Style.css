@@ -1,126 +1,236 @@
-.Page{
-    vertical-align: top;
+/* WitchWorld kleurenschema
+
+Bruin 		#554A15		Tekst/ Titels Hoofdstukken
+Gebroken wit 	#F9F3D8		Achtergrondkleur/Site/Facebook voor logo en embleem
+
+Groen 		#236633
+Beige 		#E3D6BB  
+Rood 		#A32822
+Paars		#662C8E
+Geel		#EABB1F
+Blauw		#0488A3
+*/
+
+/*Start CSS-code voor BASE*/
+body {
     background-color: #F9F3D8;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    left: 0;
-    width: 100%;
+}
+div {
+   //border: solid 1px black;  
 }
 
-.Header { 
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 30%;
-    width: 100%;
-}
-
-.HeaderImage { 
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 70%;
-    width: 100%;
+#header{
     background-image: url("/PrototypeCam/images/HeaderBackground.jpg");
-    background-size: 100% 100%;
+    background-repeat: no-repeat;
+   // border:solid 1px #ccffcc;
+    height:150px;
 }
 
-.Menu {
-    border-style: solid;
-    border-color: #0488A3;
-    border-right: 0;
-    border-left: 0;
+#logo{
+    text-align:center;
+    z-index: 1;
+    height:100%;
+}
+
+/* De menu balk */
+#menu{
+    background-color: #ffffff;
+    border-top:solid 5px #0488A3;
+    border-bottom:solid 5px #0488A3;
+
+    font-family: Forum, Neuton;
+    font-size:15pt;
+    text-align:center;
+
+    height:60px;
+  
+    display: flex;               /* establish flex container */
+    align-items: center;  
+}    
+a#menuLink:visited{
+    color:#554A15;
+    text-decoration:none;
+}
+a#menuLink:link{
+    color:#554A15;
+    text-decoration:none;
+}
+a#menuLink:hover{
+    color:#554A15;
+    text-decoration:none;
+}
+a#menuLink:active{
+    color:#554A15;
+    text-decoration:none;
+}
+/* einde css van Menu balk*/
+
+
+#background{
+    background-color: #F9F3D8;
+    position:relative;
+    height:750px;
+    padding:15px;
+}
+#content{
+    border:solid 2px #ffffff;
+    height:100%;
+    padding:5px;
+}
+
+#footer {
+    height:25px;
+    witdh:100%;
+
+}
+
+a:visited{
+    color:#554A15;
+    text-decoration:none;
+}
+a:link{
+    color:#554A15;
+    text-decoration:none;
+}
+a:hover{
+    color:#554A15;
+    text-decoration:none;
+}
+a:active{
+    color:#554A15;
+    text-decoration:none;
+}
+
+/* Einde van de CSS voor het uiterlijk van de BASE*/
+
+/* Start van de CSS voor de meldingen*/
+.ListCategory{
     position: relative;
-    top: 0;
-    left: 0;
-    height: 30%;
-    width: 100%;
-    background-color: white;
-    display: flex;
-    justify-content: space-around;
-}
-
-.LeftHalf {
-    position: relative;
-    left: 0;
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.RightHalf {
-    position: relative;
-    right: 0;
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.MenuItem {
-    position: relative;
-    top:0;    
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-}
-
-#MenuLogo {  
-    display: inline;
-    border-width: 0;
-    top: -75%;
-}
-
-.Content{
-    position: fixed;
-    top: 40%;
-    height: 60%;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-#Centered{    
-    position: relative;
-    display: inline-block;
-    text-align: left;
-    margin: 0 auto;
-}
-
-.InputItem{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    display: inline-block;
-    position: relative;
-    margin-bottom: 7px;
-    width: 400px;
-}
-
-.ListCatagory{
-    position: relative;
-    width: 20%;
-    background-color: white;
-    border-style: dotted;
+    background-color: #FCFAF3;
     border-width: 2px;
     height: 100%;
+    overflow: auto;
+    bottom: 5%;
+    border-radius: 25px;
+    padding:5px; 
+    // width: 20%;
 }
 
+.TitleCategory{
+    position: relative;
+    background-color: #0488A3;
+    left: 15%;
+    width: 50%;
+    border-width: 2px;
+    height: 46%;
+    border-radius: 25px;
+    word-wrap: break-word;
+    font-size: 130%;
+    padding: 3px;
+}
 .Title{
-    color:blue;
+    color:#0488A3;
+     font-family: Forum, Neuton;
+    font-size:12pt;
     text-align: center;
     padding: 10px;
 }
-
 .BottomLine{
     position: relative;
     border-bottom: 2px solid;
-    border-color: blue;
+    border-color: #0488A3;
     bottom: 0;
     top: 0;
     left: 10%;
     right: 90%;
     width: 80%;
+}
+
+
+.IncidentTitle {
+    background-color:#FCFAF3;
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    width: 90%;
+    border-radius: 25px;
+    cursor: pointer;
+}
+/*CSS om incidenten in- en uit te klappen*/
+.IncidentDescription {
+    display: none;
+    padding : 5px;
+}
+
+
+
+
+.IncidentPriority{
+    position: relative;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    border-right: 10px solid;
+    border-right-color: #0488A3;
+    background-color: #FCFAF3;
+    top: 10px;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+    margin-bottom: 5px;
+    padding: 1%;
+}
+
+.IncidentPriorityLow{
+    position: relative;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    border-right: 10px solid;
+    border-right-color: green;
+    background-color: #FCFAF3;
+    top: 10px;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+    margin-bottom: 5px;
+    padding: 1%;
+}
+
+.IncidentPriorityMedium{
+    position: relative;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    border-right: 10px solid;
+    border-right-color: orange;
+    background-color: #FCFAF3;
+    top: 10px;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+    margin-bottom: 5px;
+    padding: 1%;
+}
+
+.IncidentPriorityHigh{
+    position: relative;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    border-right: 10px solid;
+    border-right-color: red;
+    background-color: #FCFAF3;
+    top: 10px;
+    left: 10%;
+    right: 90%;
+    width: 80%;
+    margin-bottom: 5px;
+    padding: 1%;
+}
+/* Einde van de CSS voor de meldingen*/
+
+
+#NewReport{
+    text-align:center;
 }

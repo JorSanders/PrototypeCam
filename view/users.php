@@ -80,26 +80,20 @@ $menu = array(
             <div id="background" class="row" >
 
                 <div id="content" class="col-md-12" >
-
-                    <div class="col-md-4" >
-
-                    </div>
-                    <div class="col-md-4" id="NewReport">
-                        <br><br><br><br> 
-                        <!-- Het meldingsformulier -->
-                        <form action="" method="POST">
-                            <input class="form-control input-sm" type="text" placeholder="Onderwerp"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Locatie"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Beschrijving"> <br>
-                            <input class="form-control input-sm" type="file" placeholder="Upload foto"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Email"> <br>
-                            <input class="btn btn-default btn-sm" type="submit">
-                        </form>
-                    </div>
-                    <div class="col-md-4" >
-
-                    </div>
-
+USERS
+                    <!--   content<br>
+                       <div class="col-md-3" >
+                           a-test div 3 kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           b-test div  kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           c-test div  kolommen breed
+                       </div>
+                       <div class="col-md-3" >
+                           D-test div 3 kolommen breed
+                       </div>-->
                 </div>
 
             </div>
