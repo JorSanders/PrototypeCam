@@ -39,40 +39,41 @@
         <div id="background" class="row" >
 
             <div id="content" class="col-md-12" >
-                <canvas id="myChart" width="400" height="400"></canvas>
-                <script>
-                    var ctx = document.getElementById("myChart");
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ["Sanitair", "Voorraad", "Electrciteit", "Tuinieren", "Facilitair", "Veiligheid"],
-                            datasets: [{
-                                    label: 'Incidenten per categorie',
-                                    data: [12, 19, 3, 5, 2, 3],
-                                    backgroundColor: [
-                                        '#0488A3',
-                                        '#E3D6BB',
-                                        '#EABB1F',
-                                        '#236633',
-                                        '#662C8E',
-                                        '#A32822'
-                                    ]
+                <div class="Statistic">
+                    <canvas id="myChart" width="500" height="250"></canvas>
+                    <script>
+                        var ctx = document.getElementById("myChart");
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ["Sanitair", "Voorraad", "Electrciteit", "Tuinieren", "Facilitair", "Veiligheid"],
+                                datasets: [{
+                                        label: 'Incidenten per categorie',
+                                        data: [12, 19, 3, 5, 2, 3],
+                                        backgroundColor: [
+                                            '#0488A3',
+                                            '#E3D6BB',
+                                            '#EABB1F',
+                                            '#236633',
+                                            '#662C8E',
+                                            '#A32822'
+                                        ]
 
-                                }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
                                     }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                }
                             }
-                        }
-                    });
-                </script>
+                        });
+                    </script>
+                </div>
             </div>
-
         </div>
 
 
