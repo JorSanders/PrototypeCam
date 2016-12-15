@@ -40,78 +40,43 @@ $menu = array(
 
     <body>
 
-        <div class="container-fluid">  
+        <!-- De header + Menu -->
+        <?php
+        include 'Menu.php';
+        ?>
 
-            <div id="header" class="row">
+        <div id="background" class="row" >
 
-                <div id="logo"class="col-md-4">
+            <div id="content" class="col-md-12" >
+
+                <div class="col-md-4" >
 
                 </div>
-                <div id="logo" class="col-md-4">
-                    <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
+                <div class="col-md-4" id="NewReport">
+                    <br><br><br><br> 
+                    <!-- Het meldingsformulier -->
+                    <form action="" method="POST">
+                        <input class="form-control input-sm" type="text" placeholder="Onderwerp"> <br>
+                        <input class="form-control input-sm" type="text" placeholder="Locatie"> <br>
+                        <input class="form-control input-sm" type="text" placeholder="Beschrijving"> <br>
+                        <input class="form-control input-sm" type="file" placeholder="Upload foto"> <br>
+                        <input class="form-control input-sm" type="text" placeholder="Email"> <br>
+                        <input class="btn btn-default btn-sm" type="submit">
+                    </form>
                 </div>
-                <div id="logo"class="col-md-4">
-
-                </div>
-            </div>
-
-            <!-- Het menu -->
-
-            <div id="menu" class="row">
-                <div  class="col-md-12">
-
-                    <div class="col-md-1">
-
-                    </div>
-
-                    <?php
-                    foreach ($menu as $menuItem) {
-                        echo" <div   class='col-md-2'>
-                    <a href='$menuItem[1]'>$menuItem[0]</a>
-                </div>    ";
-                    }
-                    ?>
-                    <div class="col-md-1">
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="background" class="row" >
-
-                <div id="content" class="col-md-12" >
-
-                    <div class="col-md-4" >
-
-                    </div>
-                    <div class="col-md-4" id="NewReport">
-                        <br><br><br><br> 
-                        <!-- Het meldingsformulier -->
-                        <form action="" method="POST">
-                            <input class="form-control input-sm" type="text" placeholder="Onderwerp"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Locatie"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Beschrijving"> <br>
-                            <input class="form-control input-sm" type="file" placeholder="Upload foto"> <br>
-                            <input class="form-control input-sm" type="text" placeholder="Email"> <br>
-                            <input class="btn btn-default btn-sm" type="submit">
-                        </form>
-                    </div>
-                    <div class="col-md-4" >
-
-                    </div>
+                <div class="col-md-4" >
 
                 </div>
 
-            </div>
-
-            <div id="footer">
-                Dit is de footer.
             </div>
 
         </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="../js/bootstrap.min.js"></script>
-    </body>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+</body>
 </html>

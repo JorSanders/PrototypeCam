@@ -1,13 +1,3 @@
-<?php
-$menu = array(
-    array("Home", "index.php"),
-    array("Overzichten", "list.php"),
-    array("Statistieken", "Statistics.php"),
-    array("Gebruikers", "index.php"),
-    array("Archief", "index.php")
-);
-?>
-
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -41,132 +31,55 @@ $menu = array(
 
     <body>
 
-        <div class="container-fluid">  
+        <!-- De header + Menu -->
+        <?php
+        include 'Menu.php';
+        ?>
 
-            <div id="header" class="row">
+        <div id="background" class="row" >
 
-                <div id="logo"class="col-md-4">
+            <div id="content" class="col-md-12" >
+                <canvas id="myChart" width="400" height="400"></canvas>
+                <script>
+                    var ctx = document.getElementById("myChart");
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ["Sanitair", "Voorraad", "Electrciteit", "Tuinieren", "Facilitair", "Veiligheid"],
+                            datasets: [{
+                                    label: 'Incidenten per categorie',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        '#0488A3',
+                                        '#E3D6BB',
+                                        '#EABB1F',
+                                        '#236633',
+                                        '#662C8E',
+                                        '#A32822'
+                                    ]
 
-                </div>
-                <div id="logo" class="col-md-4">
-                    <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
-                </div>
-                <div id="logo"class="col-md-4">
-
-                </div>
-            </div>
-
-            <!-- Het menu -->
-
-            <div id="menu" class="row">
-                <div  class="col-md-12">
-
-                    <div class="col-md-1">
-
-                    </div>
-
-                    <?php
-                    foreach ($menu as $menuItem) {
-                        echo" <div   class='col-md-2'>
-                    <a href='$menuItem[1]'>$menuItem[0]</a>
-                </div>    ";
-                    }
-                    ?>
-                    <div class="col-md-1">
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="background" class="row" >
-
-                <div id="content" class="col-md-12" >
-
-                    <script>
-                        var ctx = document.getElementById("myChart");
-                        var myChart = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: ["Sanitair", "Voorraad", "Electrciteit", "Tuinieren", "Facilitair", "Veiligheid"],
-                                datasets: [{
-                                        label: 'Incidenten per categorie',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        backgroundColor: [
-                                            '#0488A3',
-                                            '#E3D6BB',
-                                            '#EABB1F',
-                                            '#236633',
-                                            '#662C8E',
-                                            '#A32822'
-                                        ]
-
+                                }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
                                     }]
-                            },
-                            options: {
-                                scales: {
-                                    yAxes: [{
-                                            ticks: {
-                                                beginAtZero: true
-                                            }
-                                        }]
-                                }
                             }
-                        });
-                    </script>
-                </div>
-
-            </div>
-
-            <div id="footer">
-                Dit is de footer.
+                        }
+                    });
+                </script>
             </div>
 
         </div>
+
+
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

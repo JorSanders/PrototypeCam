@@ -27,12 +27,10 @@ body {
 #logo{
     position: relative;
     text-align:center;
-
 }
 
 /* De menu balk */
 #menu{
-    
     background-color: #ffffff;
     border-top:solid 5px #0488A3;
     border-bottom:solid 5px #0488A3;
@@ -56,8 +54,6 @@ body {
     width: 98%;
     left: 1%;
 }
-
-
 
 a:visited{
     color:#554A15;
@@ -84,11 +80,9 @@ a:active{
     background-color: #FCFAF3;
     border-width: 2px;
     height: 100%;
-
     bottom: 5%;
     border-radius: 25px;
     padding:5px;
-
 }
 
 .TitleCategory{
@@ -103,6 +97,7 @@ a:active{
     font-size: 130%;
     padding: 3px;
 }
+
 .Title{
     color:#0488A3;
     font-family: Forum, Neuton;
@@ -110,6 +105,7 @@ a:active{
     text-align: center;
     padding: 10px;
 }
+
 .BottomLine{
     position: relative;
     border-bottom: 2px solid;
@@ -136,9 +132,6 @@ a:active{
     display: none;
     padding : 5px;
 }
-
-
-
 
 .IncidentPriority{
     position: relative;
@@ -204,7 +197,6 @@ a:active{
     padding: 1%;
 }
 /* Einde van de CSS voor de meldingen*/
-
 
 #NewReport{
     text-align:center;

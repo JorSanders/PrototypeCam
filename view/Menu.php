@@ -3,7 +3,6 @@ $menu = [["Home", "index.php"],
     ["Overzichten", "list.php"],
     ["Statistieken", "Statistics.php"],
     ["Gebruikers", "index.php"],
-    ["test", "test.php"]
 ];
 ?>
 
