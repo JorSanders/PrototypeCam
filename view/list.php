@@ -1,14 +1,4 @@
 <?php
-$menu = array(
-    array("Home", "index.php"),
-    array("Overzichten", "list.php"),
-    array("Statistieken", "statistics.php"),
-    array("Gebruikers", "users.php"),
-    array("Archief", "archive.php")
-);
-?>
-
-<?php
 $IncidentNew = array(
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "0"),
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "1"),
@@ -61,6 +51,8 @@ $IncidentDone = array(
         <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
         <script src="../js/incidentAnimation.js"></script>
 
+
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -73,53 +65,16 @@ $IncidentDone = array(
 
     <body>
 
-
-
-
-
-        <nav class="navbar navbar-default " role="navigation" >
-
-            <div id="header" class="col-md-12">
-                <div id="logo" class="col-md-12">
-                    <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
-                </div>
-
-            </div>
-
-            <!-- Het menu -->
-
-
-
-
-
-
-            <div id="menu">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav nav-justified ">
-                        <?php
-                        foreach ($menu as $menuItem) {
-                            echo" <li><a href='$menuItem[1]'>$menuItem[0]</a></li> ";
-                        }
-                        ?>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
+        <!-- De header + Menu -->
+        <?php
+        include 'Menu.php';
+        ?>
 
         <div id="background" class="row" >
 
+
             <div id="content" class="col-md-12" >
+
 
 
 

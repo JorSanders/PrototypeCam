@@ -18,15 +18,10 @@ body {
     height: 100%;
 }
 
-
 #header{
     background-image: url("/PrototypeCam/images/HeaderBackground.jpg");
     position: relative;
- 
-  
     background-size: cover;
-
-
 }
 
 #logo{
@@ -37,17 +32,13 @@ body {
 
 /* De menu balk */
 #menu{
-
+    
     background-color: #ffffff;
     border-top:solid 5px #0488A3;
     border-bottom:solid 5px #0488A3;
     font-family: Forum, Neuton;
     font-size:15pt;
 }
-
-
-
-
 
 #background{
     background-color: #F9F3D8;
@@ -57,9 +48,9 @@ body {
     width: 100%;
 }
 #content{
-    position: fixed;
+
     border:solid 2px #ffffff;
-    height: 65%;
+    height: 100%;
     padding:5px;
     overflow: auto;
     width: 98%;
@@ -89,7 +80,7 @@ a:active{
 
 /* Start van de CSS voor de meldingen*/
 .ListCategory{
-    position: relative;
+
     background-color: #FCFAF3;
     border-width: 2px;
     height: 100%;
