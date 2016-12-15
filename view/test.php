@@ -5,10 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\incidentController.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\userController.php";
 
-$incidentController = new IncidentController();
+$userController = new UserController();
 
-$allUsers = $incidentController->selectAllUsers();
+$allUsers = $userController->selectAllUsers();
 
 print_r ($allUsers);

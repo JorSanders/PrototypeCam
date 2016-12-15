@@ -2,7 +2,6 @@
 $menu = array(
     array("Home", "index.php"),
     array("Overzichten", "list.php"),
-
     array("Statistieken", "index.php"),
     array("Gebruikers", "index.php"),
     array("Archief", "index.php")
@@ -41,42 +40,64 @@ $menu = array(
 
     <body>
 
+
+
+        <div id="header" class="col-md-12">
+            <div id="logo" class="col-md-12">
+                <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
+            </div>
+
+        </div>
+
+        <!-- Het menu -->
+
+
+
+        <nav class="navbar navbar-default " role="navigation" >
+
+           
+            <div id="menu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav nav-justified ">
+                        <?php
+                        foreach ($menu as $menuItem) {
+                            echo" <li><a href='$menuItem[1]'>$menuItem[0]</a></li> ";
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
         <div class="container-fluid">  
 
-            <div id="header" class="row">
 
-                <div id="logo"class="col-md-4">
 
-                </div>
-              <div id="logo" class="col-md-4">
-                    <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
-                </div>
-                <div id="logo"class="col-md-4">
 
-                </div>
-            </div>
 
-            <!-- Het menu -->
 
-            <div id="menu" class="row">
-                <div  class="col-md-12">
-                    
-                    <div class="col-md-1">
 
-                </div>
-                    
-                    <?php
-                    foreach ($menu as $menuItem) {
-                        echo" <div   class='col-md-2'>
-                    <a href='$menuItem[1]'>$menuItem[0]</a>
-                </div>    ";
-                    }
-                    ?>
-                    <div class="col-md-1">
 
-                </div>
-                </div>
-            </div>
+
+
+
+
+
+
+
+
 
             <div id="background" class="row" >
 
@@ -98,7 +119,7 @@ $menu = array(
                 </div>
 
             </div>
-            
+
             <div id="footer">
                 Dit is de footer.
             </div>

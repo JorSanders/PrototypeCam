@@ -12,11 +12,6 @@ class IncidentController {
 
     }
     
-    public function selectAllUsers(){
-        $colomnNames = array ("Firstname", "Surname");
-        $tableName = "user";
-                
-        return ( $this->queryManager->select($colomnNames, $tableName));
-    }
+
 
 }

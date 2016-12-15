@@ -1,6 +1,6 @@
 <?php
 $menu = array(
-   array("Home", "index.php"),
+    array("Home", "index.php"),
     array("Overzichten", "list.php"),
     array("Statistieken", "statistics.php"),
     array("Gebruikers", "users.php"),
@@ -73,412 +73,415 @@ $IncidentDone = array(
 
     <body>
 
-        <div class="container-fluid">  
 
-            <div id="header" class="row">
 
-                <div id="logo"class="col-md-4">
 
-                </div>
-                <div id="logo" class="col-md-4">
+
+        <nav class="navbar navbar-default " role="navigation" >
+
+            <div id="header" class="col-md-12">
+                <div id="logo" class="col-md-12">
                     <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
                 </div>
-                <div id="logo"class="col-md-4">
 
-                </div>
             </div>
 
             <!-- Het menu -->
 
-            <div id="menu" class="row">
-                <div  class="col-md-12">
 
-                    <div class="col-md-1">
 
-                    </div>
 
-                    <?php
-                    foreach ($menu as $menuItem) {
-                        echo" <div   class='col-md-2'>
-                    <a href='$menuItem[1]'>$menuItem[0]</a>
-                </div>    ";
-                    }
-                    ?>
-                    <div class="col-md-1">
 
-                    </div>
-                </div>
-            </div>
 
-            <div id="background" class="row" >
-
-                <div id="content" class="col-md-12" >
-
-                    
-                    <!-- Incidenten status: Nieuw-->
-                    <div class="col-md-3" >
-                        <div class="ListCategory">
-                            <div class="Title">
-                                Nieuwe meldingen
-                            </div>
-                            <div class="BottomLine"></div>
-                            <?php
-                            foreach ($IncidentNew as $IncidentDetail) {
-                                if ($IncidentDetail[5] === "1") {
-
-                                    echo "
-                                <div class='IncidentPriorityLow'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } elseif ($IncidentDetail[5] === "2") {
-                                    echo "
-                                <div class='IncidentPriorityMedium'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } elseif ($IncidentDetail[5] === "3") {
-                                    echo "
-                                <div class='IncidentPriorityHigh'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } else {
-                                    echo "
-                                <div class='IncidentPriority'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-
-                    <!-- Incidenten status: BEZIG-->
-                    <div class="col-md-3" >
-                        <div class="ListCategory">
-                            <div class="Title">
-                                Bezig
-                            </div>
-                            <div class="BottomLine"></div>
-                            <?php
-                            foreach ($IncidentNew as $IncidentDetail) {
-                                if ($IncidentDetail[5] === "1") {
-
-                                    echo "
-                                <div class='IncidentPriorityLow'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } elseif ($IncidentDetail[5] === "2") {
-                                    echo "
-                                <div class='IncidentPriorityMedium'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } elseif ($IncidentDetail[5] === "3") {
-                                    echo "
-                                <div class='IncidentPriorityHigh'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } else {
-                                    echo "
-                                <div class='IncidentPriority'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-
-                    <!-- Incidenten status: IN DE WACHT-->
-                    <div class="col-md-3" >
-                        <div class="ListCategory">
-                            <div class="Title">
-                                In de wacht
-                            </div>
-                            <div class="BottomLine"></div>
-                            <?php
-                            foreach ($IncidentNew as $IncidentDetail) {
-                                if ($IncidentDetail[5] === "1") {
-
-                                    echo "
-                                <div class='IncidentPriorityLow'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } elseif ($IncidentDetail[5] === "2") {
-                                    echo "
-                                <div class='IncidentPriorityMedium'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } elseif ($IncidentDetail[5] === "3") {
-                                    echo "
-                                <div class='IncidentPriorityHigh'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } else {
-                                    echo "
-                                <div class='IncidentPriority'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-
-                    <!-- Incidenten status: AFGEROND-->
-                    <div class="col-md-3" >
-                        <div class="ListCategory">
-                            <div class="Title">
-                                Afgerond
-                            </div>
-                            <div class="BottomLine"></div>
-                            <?php
-                            foreach ($IncidentNew as $IncidentDetail) {
-                                if ($IncidentDetail[5] === "1") {
-
-                                    echo "
-                                <div class='IncidentPriorityLow'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } elseif ($IncidentDetail[5] === "2") {
-                                    echo "
-                                <div class='IncidentPriorityMedium'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } elseif ($IncidentDetail[5] === "3") {
-                                    echo "
-                                <div class='IncidentPriorityHigh'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                } else {
-                                    echo "
-                                <div class='IncidentPriority'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-
+            <div id="menu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
 
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav nav-justified ">
+                        <?php
+                        foreach ($menu as $menuItem) {
+                            echo" <li><a href='$menuItem[1]'>$menuItem[0]</a></li> ";
+                        }
+                        ?>
+                    </ul>
+                </div>
             </div>
+        </nav>
 
-            <div id="footer">
-                Dit is de footer.
+
+        <div id="background" class="row" >
+
+            <div id="content" class="col-md-12" >
+
+
+
+                <!-- Incidenten status: Nieuw-->
+                <div class="col-md-3" >
+                    <div class="ListCategory">
+                        <div class="Title">
+                            Nieuwe meldingen
+                        </div>
+                        <div class="BottomLine"></div>
+                        <?php
+                        foreach ($IncidentNew as $IncidentDetail) {
+                            if ($IncidentDetail[5] === "1") {
+
+                                echo "
+                                <div class='IncidentPriorityLow'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } elseif ($IncidentDetail[5] === "2") {
+                                echo "
+                                <div class='IncidentPriorityMedium'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } elseif ($IncidentDetail[5] === "3") {
+                                echo "
+                                <div class='IncidentPriorityHigh'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } else {
+                                echo "
+                                <div class='IncidentPriority'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <!-- Incidenten status: BEZIG-->
+                <div class="col-md-3" >
+                    <div class="ListCategory">
+                        <div class="Title">
+                            Bezig
+                        </div>
+                        <div class="BottomLine"></div>
+                        <?php
+                        foreach ($IncidentNew as $IncidentDetail) {
+                            if ($IncidentDetail[5] === "1") {
+
+                                echo "
+                                <div class='IncidentPriorityLow'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } elseif ($IncidentDetail[5] === "2") {
+                                echo "
+                                <div class='IncidentPriorityMedium'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } elseif ($IncidentDetail[5] === "3") {
+                                echo "
+                                <div class='IncidentPriorityHigh'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } else {
+                                echo "
+                                <div class='IncidentPriority'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <!-- Incidenten status: IN DE WACHT-->
+                <div class="col-md-3" >
+                    <div class="ListCategory">
+                        <div class="Title">
+                            In de wacht
+                        </div>
+                        <div class="BottomLine"></div>
+                        <?php
+                        foreach ($IncidentNew as $IncidentDetail) {
+                            if ($IncidentDetail[5] === "1") {
+
+                                echo "
+                                <div class='IncidentPriorityLow'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } elseif ($IncidentDetail[5] === "2") {
+                                echo "
+                                <div class='IncidentPriorityMedium'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } elseif ($IncidentDetail[5] === "3") {
+                                echo "
+                                <div class='IncidentPriorityHigh'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } else {
+                                echo "
+                                <div class='IncidentPriority'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <!-- Incidenten status: AFGEROND-->
+                <div class="col-md-3" >
+                    <div class="ListCategory">
+                        <div class="Title">
+                            Afgerond
+                        </div>
+                        <div class="BottomLine"></div>
+                        <?php
+                        foreach ($IncidentNew as $IncidentDetail) {
+                            if ($IncidentDetail[5] === "1") {
+
+                                echo "
+                                <div class='IncidentPriorityLow'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } elseif ($IncidentDetail[5] === "2") {
+                                echo "
+                                <div class='IncidentPriorityMedium'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } elseif ($IncidentDetail[5] === "3") {
+                                echo "
+                                <div class='IncidentPriorityHigh'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            } else {
+                                echo "
+                                <div class='IncidentPriority'>
+                                    <div class='IncidentTitle'>
+                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                    </div>
+                                    <div class='IncidentDescription'>
+                                        <h4>Beschrijving: </h4>
+                                        $IncidentDetail[1] 
+                                        <h4>Soort Incident:</h4>
+                                        $IncidentDetail[2] 
+                                        <h4>Datum waarop incident is gemeld:</h4>
+                                        $IncidentDetail[3] 
+                       
+                                    </div>
+                                </div>
+                                 
+                             ";
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+
             </div>
 
         </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="../js/bootstrap.min.js"></script>
-    </body>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+</body>
 </html>
