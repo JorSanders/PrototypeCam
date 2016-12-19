@@ -6,18 +6,27 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\incidentClass.php"
 class IncidentController {
 
     private $queryManager;
-    
-    public function __construct() {        
-        $this->queryManager = new QueryManager;
 
+    public function __construct() {
+        $this->queryManager = new QueryManager;
+    }
+
+    public function selectAllIncidents() {
+        $colomnNames = array("Id");
+        $tableName = "incident";
+
+        $result = $this->queryManager->select($colomnNames, $tableName);
+
+        foreach ($result as $row) {
+            $incident = new Incident($row["Id"]);
+            $incidentList[] = $incident;
+        }
+        return $incidentList;
     }
     
-    public function selectAllIncidents(){
-        $colomnNames = array ("Id", "Title", "Description", "CategoryId", 
-            "DateMentioned", "DateFinished", "PriorityId", "Archived", "Deleted");
+    public function createNewIncident(){
         $tableName = "incident";
-                
-        return ( $this->queryManager->select($colomnNames, $tableName));
+        $this->queryManager->createEmptyRow($tableName);
     }
 
 }

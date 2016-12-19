@@ -1,136 +1,35 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\database\queryManager.php";
+
 class Incident {
 
-    private $title;
-    private $description;
-    private $catagoryId;
-    private $dateMentioned;
-    private $dateFinished;
-    private $priority;
-    private $archived;
-    private $deleted;
-    private $locationList;
-    private $responsiblityList;
-    private $commentList;
-    private $catagoryList;
-    private $fileList;
-    private $statusList;
+    private $id;
+    private $queryManager;
 
-    public function __construct() {
+    public function __construct($id) {
+        $this->id = $id;
+        $this->queryManager = new QueryManager;
+    }
+
+    public function getValues() {
+        /* required info to execute the query */
+        $colomnNames = array("Id, Title, Description, CategoryId, DateMentioned, DateFinished, PriorityId, Archived, Deleted");
+        $tableName = "incident";
+        $whereConditions = array("id = " . $this->id);
         
+        /* get the result from the query
+         * there can only be one with matching ids
+         * so the values are the first values from the frist index from the result aray
+         */
+        $result = $this->queryManager->select($colomnNames, $tableName, $whereConditions);
+        $values = $result[0];
+        
+        return ($values);
     }
 
-    public function getTitle() {
-        return $this->title;
-    }
-
-    public function setTitle($title) {
-        $this->title = $title;
-    }
-
-    public function getDescription() {
-        return $this->description;
-    }
-
-    public function setDescription($description) {
-        $this->description = $description;
-    }
-
-    public function getCatagoryId() {
-        return $this->catagoryId;
-    }
-
-    public function setCatagoryId($catagoryId) {
-        $this->catagory = $catagoryId;
-    }
-
-    public function getDateMentioned() {
-        return $this->dateMentioned;
-    }
-
-    public function setDateMentioned($dateMentioned) {
-        $this->dateMentioned = $dateMentioned;
-    }
-
-    public function getDateFinished() {
-        return $this->dateFinished;
-    }
-
-    public function setDateFinished($dateFinished) {
-        $this->dateFinished = $dateFinished;
-    }
-
-    public function getPriority() {
-        return $this->priority;
-    }
-
-    public function setPriority($priority) {
-        $this->priority = $priority;
-    }
-
-    public function getArchived() {
-        return $this->archived;
-    }
-
-    public function setArchived($archived) {
-        $this->archived = $archived;
-    }
-
-    public function getDeleted() {
-        return $this->deleted;
-    }
-
-    public function setDeleted($deleted) {
-        $this->deleted = $deleted;
-    }
-
-    public function getLocationList() {
-        return $this->locationList;
-    }
-
-    public function setLocationList($locationList) {
-        $this->locationList = $locationList;
-    }
-
-    public function getResonibilityList() {
-        return $this->responsiblityList;
-    }
-
-    public function setResonibilityList($responsibilityList) {
-        $this->responsiblityList = $responsibilityList;
-    }
-
-    public function getCommentList() {
-        return $this->commentList;
-    }
-
-    public function setCommentList($commentList) {
-        $this->commentList = $commentList;
-    }
-
-    public function getCatagoryList() {
-        return $this->catagoryList;
-    }
-
-    public function setCatagoryList($catagoryList) {
-        $this->catagoryList = $catagoryList;
-    }
-
-    public function getFileList() {
-        return $this->fileList;
-    }
-
-    public function setFileList($fileList) {
-        $this->fileList = $fileList;
-    }
-
-    public function getStatusList() {
-        return $this->statusList;
-    }
-
-    public function setStatusList($statusList) {
-        $this->statusList = $statusList;
+    public function setValues($values) {
+        
     }
 
 }
