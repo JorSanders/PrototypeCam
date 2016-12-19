@@ -1,8 +1,7 @@
 <?php
 
 class QueryManager {
-    /* details or connecting to database, please don't touch */
-
+    /* details for connecting to database, please don't touch */
     private $dbhost = "localhost";
     private $dbusername = "Witchidents";
     private $dbpassword = "Incident@Witchworld";
@@ -20,13 +19,21 @@ class QueryManager {
         $this->mysqli = new mysqli($this->dbhost, $this->dbusername, $this->dbpassword, $this->dbname);
     }
 
-    public function select($colomnNames, $tableName) {
-        $returnArray;
-        /* convert the array to a string */
+    public function select($colomnNames, $tableName, $whereConditions = NULL, $operator = "AND") {
+        /* convert the column names  to a string */
         $colomnsString = implode(", ", $colomnNames);
 
+        /* convert the where conditions to a string */
+        if (isset($whereConditions)) {
+            $whereConditions = implode("WHERE " . $operator . " ", $whereConditions);
+        } else {
+            $whereConditions = "";
+        }
+
         /* the sql code */
-        $sql = "SELECT $colomnsString FROM $tableName";
+        $sql = "SELECT $colomnsString FROM $tableName $whereConditions";
+
+        echo $sql;
 
         /* execute the query */
         $sqliResult = $this->mysqli->query($sql);

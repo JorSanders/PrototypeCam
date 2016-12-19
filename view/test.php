@@ -9,6 +9,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\incidentContr
 
 $incidentController = new IncidentController();
 
-$allUsers = $incidentController->selectAllUsers();
+$allIncidents = $incidentController->selectAllIncidents();
 
-print_r ($allUsers);
+print_r ($allIncidents);

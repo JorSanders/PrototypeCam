@@ -12,9 +12,10 @@ class IncidentController {
 
     }
     
-    public function selectAllUsers(){
-        $colomnNames = array ("Firstname", "Surname");
-        $tableName = "user";
+    public function selectAllIncidents(){
+        $colomnNames = array ("Id", "Title", "Description", "CategoryId", 
+            "DateMentioned", "DateFinished", "PriorityId", "Archived", "Deleted");
+        $tableName = "incident";
                 
         return ( $this->queryManager->select($colomnNames, $tableName));
     }
