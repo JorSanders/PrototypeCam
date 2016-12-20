@@ -2,6 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\database\queryManager.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\incidentClass.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\categoryClass.php";
 
 class IncidentController {
 
@@ -23,17 +24,19 @@ class IncidentController {
         }
         return $incidentList;
     }
-    
-    public function createNewIncident($properties){
+
+    public function createNewIncident($properties) {
         $tableName = "incident";
         $incidentId = $this->queryManager->createEmptyRow($tableName);
-        
+
         $this->updateIncident($properties, $incidentId);
     }
-    
-    public function updateIncident($properties, $incidentId){
+
+    public function updateIncident($properties, $incidentId) {
         $incident = new Incident($incidentId);
         $incident->setProperties($properties);
     }
+    
+    
 
 }

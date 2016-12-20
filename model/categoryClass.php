@@ -1,28 +1,8 @@
 <?php
 
-class catagory {
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\databaseObjectClass.php";
 
-    private $name;
-    private $description;
+class Category extends databaseObject{    
 
-    public function __construct() {
-        
-    }
-
-    public function getName() {
-        return $this->name;
-    }
-
-    public function setName($name) {
-        $this->name = $name;
-    }
-
-    public function getDescription() {
-        return $this->description;
-    }
-
-    public function setDescription($description) {
-        $this->description = $description;
-    }
-
+    
 }
