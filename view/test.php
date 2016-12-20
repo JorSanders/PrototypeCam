@@ -9,14 +9,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\incidentContr
 
 $incidentController = new IncidentController();
 
-$incidentController->createNewIncident();
+$properties = array("Archived = 1 ");
+$incidentController->createNewIncident($properties);
 
 $incidentList = $incidentController->selectAllIncidents();
 
 foreach ($incidentList as $incident){
-    $incidentValues = $incident->getValues();
+    $incidentProperties = $incident->getProperties();
     echo "<pre>";
-    print_r($incidentValues);
+    print_r($incidentProperties);
     echo "</pre>";
 }
 

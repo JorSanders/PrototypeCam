@@ -24,9 +24,16 @@ class IncidentController {
         return $incidentList;
     }
     
-    public function createNewIncident(){
+    public function createNewIncident($properties){
         $tableName = "incident";
-        $this->queryManager->createEmptyRow($tableName);
+        $incidentId = $this->queryManager->createEmptyRow($tableName);
+        
+        $this->updateIncident($properties, $incidentId);
+    }
+    
+    public function updateIncident($properties, $incidentId){
+        $incident = new Incident($incidentId);
+        $incident->setProperties($properties);
     }
 
 }
