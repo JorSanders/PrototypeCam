@@ -16,7 +16,7 @@ body {
     background-color: #F9F3D8;
 }
 div {
-   //border: solid 1px black;  
+   border: solid 1px black;  
 }
 
 #header{
@@ -103,6 +103,8 @@ a:active{
 
 /* Einde van de CSS voor het uiterlijk van de BASE*/
 
+
+
 /* Start van de CSS voor de meldingen*/
 .ListCategory{
     position: relative;
@@ -130,7 +132,7 @@ a:active{
 }
 .Title{
     color:#0488A3;
-     font-family: Forum, Neuton;
+    font-family: Forum, Neuton;
     font-size:12pt;
     text-align: center;
     padding: 10px;
@@ -146,8 +148,12 @@ a:active{
     width: 80%;
 }
 
-
 .IncidentTitle {
+    font-family:Arial;
+    font-size:15pt;
+    
+    color:#0488A3;
+
     background-color:#FCFAF3;
     margin-top: 2px;
     margin-left: 5px;
@@ -155,15 +161,16 @@ a:active{
     width: 90%;
     border-radius: 25px;
     cursor: pointer;
+    
+    
 }
 /*CSS om incidenten in- en uit te klappen*/
 .IncidentDescription {
+    font-family:forum;
+    font-size:10pt;
     display: none;
     padding : 5px;
 }
-
-
-
 
 .IncidentPriority{
     position: relative;
