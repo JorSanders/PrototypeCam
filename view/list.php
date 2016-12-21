@@ -101,7 +101,9 @@ $IncidentDone = array(
                                         $IncidentDetail[2] 
                                         <h4>Datum waarop incident is gemeld:</h4>
                                         $IncidentDetail[3] 
-                       
+                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+
+                                        <input class='btn btn-primary btn-danger btn-sm' type='button' value='Verwijderen'>
                                     </div>
                                 </div>
                                  

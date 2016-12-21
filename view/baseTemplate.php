@@ -1,13 +1,3 @@
-<?php
-$menu = array(
-    array("Home", "index.php"),
-    array("Overzichten", "list.php"),
-    array("Statistieken", "index.php"),
-    array("Gebruikers", "index.php"),
-    array("Archief", "index.php")
-);
-?>
-
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -39,55 +29,19 @@ $menu = array(
     </head>
 
     <body>
-
-
-
- 
-
-
-
-
-
-
-
-
         <!-- De header + Menu -->
         <?php
         include 'Menu.php';
         ?>
 
-
-
-
-
-
-
-
-
-
-
             <div id="background" class="row" >
 
                 <div id="content" class="col-md-12" >
 
-                    <!--   content<br>
-                       <div class="col-md-3" >
-                           a-test div 3 kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           b-test div  kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           c-test div  kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           D-test div 3 kolommen breed
-                       </div>-->
+
                 </div>
 
             </div>
-
-
 
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

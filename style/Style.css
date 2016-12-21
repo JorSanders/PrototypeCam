@@ -16,6 +16,7 @@ body {
     background-color: #F9F3D8;
     width: 100%;
     height: 100%;
+    font-family: forum;
 }
 
 #header{
@@ -51,7 +52,7 @@ body {
     height: 100%;
     padding:5px;
     overflow: auto;
-    width: 98%;
+    width: 99%;
     left: 1%;
 }
 
@@ -199,7 +200,7 @@ a:active{
 /* Einde van de CSS voor de meldingen*/
 
 #NewReport{
-    text-align:center;
+
 }
 
 .Statistic {

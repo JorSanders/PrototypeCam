@@ -55,7 +55,9 @@ $menu = array(
                     <p>Het incidentmeldings systeem van Witchworld.<br>
                         Hier kunt u al uw problemen kwijt.</p>
                     
-                    <p>(vul hier extra tekst bij)</p>
+                    <p>
+                        Hier kunt u een al bestaande melding aanpassen.
+                    </p>
                 </div>
                 <div class="col-md-4" id="NewReport">
                     <br><br><br><br> 
