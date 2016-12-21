@@ -1,20 +1,31 @@
 <?php
 
-class Location {
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\databaseObjectClass.php";
 
-    private $value;
-    private $type;
+class Location extends databaseObject {
 
-    public function __construct() {
-        
+    protected $columnNames = array("Id", "IncidentId", "TypeId");
+    protected $tableName = "location";
+
+    public function getProperties($columnNames = NULL) {
+        $properties = parent::getProperties($columnNames);
+        $properties["locationDetails"] = $this->getLocationDetails();
+        return $properties;
     }
 
-    public function getValue() {
-        return ($this->value);
-    }
+    private function getLocationDetails() {
+        $colomnNames = array("Type", "Description");
+        $tableName = "location_type";
+        $whereConditions = array("Id = " . $this->id);
+        $result = $this->queryManager->select($colomnNames, $tableName, $whereConditions);
 
-    public function setValue($value) {
-        $this->value = $value;
+        if ($result) {
+            foreach ($result as $row) {
+                $locationDetails["Type"] = ($row["Type"]);
+                $locationDetails["Description"] = ($row["Description"]);
+            }
+            return $locationDetails;
+        }
     }
 
 }

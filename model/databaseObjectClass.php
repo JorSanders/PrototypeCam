@@ -9,9 +9,8 @@ abstract class databaseObject {
     protected $tableName;
     protected $columnNames;
 
-    public function __construct($id, $tableName) {
+    public function __construct($id) {
         $this->id = $id;
-        $this->tableName = $tableName;
         $this->queryManager = new QueryManager;
     }
 
@@ -26,7 +25,7 @@ abstract class databaseObject {
          * there can only be one with matching ids
          * so the values are the first values from the frist index from the result aray
          */
-        $result = $this->queryManager->select($this->colomnNames, $this->tableName, $whereConditions);
+        $result = $this->queryManager->select($columnNames, $this->tableName, $whereConditions);
         $properties = $result[0];
 
         return ($properties);

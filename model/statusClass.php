@@ -1,28 +1,30 @@
 <?php
 
-class Status {
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\databaseObjectClass.php";
 
-    private $name;
-    private $date;
+class status extends databaseObject {
 
-    public function __construct() {
-        
+    protected $columnNames = array("Id", "IncidentId", "NameId", "Date");
+    protected $tableName = "status";
+
+    public function getProperties($columnNames = NULL) {
+        $properties = parent::getProperties($columnNames);
+        $properties["statusName"] = $this->getStatusName();
+        return $properties;
     }
 
-    public function getName() {
-        return $this->name;
-    }
+    private function getStatusName() {
+        $colomnNames = array("Name");
+        $tableName = "status_name";
+        $whereConditions = array("Id = " . $this->id);
+        $result = $this->queryManager->select($colomnNames, $tableName, $whereConditions);
 
-    public function setName($name) {
-        $this->name = $name;
-    }
-
-    public function getDate() {
-        return $this->date;
-    }
-
-    public function setDate($date) {
-        $this->date = $date;
+        if ($result) {
+            foreach ($result as $row) {
+                $statusName = ($row["Name"]);
+            }
+            return $statusName;
+        }
     }
 
 }

@@ -2,7 +2,6 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\database\queryManager.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\incidentClass.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\categoryClass.php";
 
 class IncidentController {
 
@@ -36,7 +35,6 @@ class IncidentController {
         $incident = new Incident($incidentId);
         $incident->setProperties($properties);
     }
-    
     
 
 }
