@@ -1,3 +1,12 @@
+<?php
+$User = array(
+    array("1", "Jor Sanders", "jor.sanders@hotmail.com", "25-11-2016", "26-22-2016"),
+    array("2", "Marit Besseling", "marit.besseling@hotmail.com", "25-11-2016", "X"),
+    array("3", "Tessa Scheuder", "tessa.scheuder@hotmail.com", "25-11-2016", "X"),
+    array("4", "Lennard Peerenboom", "lennard.peerenboom@hotmail.com", "25-11-2016", "28-12-2016")
+);
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
     <head>
@@ -37,10 +46,30 @@
 
             <div id="content" class="col-md-12" >
 
-                
-
+                <div id="table">
+                    <table  class="table table-sriped table-bordered table-hover table-responsive table-curved " >
+                        <tr>
+                            <th>#</th>
+                            <th>Naam</th>
+                            <th>Email</th>
+                            <th>Datum aangemaakt</th>
+                            <th>Datum afgemaakt</th>
+                        </tr>
+                        <?php
+                            foreach ($User as $user) {
+                                echo" <tr>
+                                        <td>$user[0]</td>
+                                        <td>$user[1]</td>
+                                        <td>$user[2]</td>
+                                        <td>$user[3]</td>
+                                        <td>$user[4]</td>
+                                    </tr> 
+                                ";
+                            }   
+                        ?>
+                    </table>
+                </div>
             </div>
-
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
