@@ -7,6 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\photoIncidentClass
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\statusClass.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\locationClass.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\userClass.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\commentClass.php";
 
 class Incident extends databaseObject {
 
@@ -30,23 +31,24 @@ class Incident extends databaseObject {
         }
 
         /* get the photos */
-        $photosProperties = $this->getPhotos();
-        $properties["photosProperties"] = $photosProperties;
+        $photos = $this->getPhotos();
+        $properties["Photos"] = $photos;
 
         /* get the status */
-        $statusProperties = $this->getStatus();
-        $properties["statusProperties"] = $statusProperties;
+        $status = $this->getStatus();
+        $properties["Status"] = $status;
 
         /* get the location */
-        $locationProperties = $this->getLocation();
-        $properties["locationProperties"] = $locationProperties;
+        $location = $this->getLocation();
+        $properties["Location"] = $location;
 
         /* get the users */
-        $userProperties = $this->getUsers();
-        $properties["userProperties"] = $userProperties;
-        
+        $users = $this->getUsers();
+        $properties["Users"] = $users;
+
         /* get the comments */
-        
+        $comments = $this->getComments();
+        $properties["Comments"]  = $comments;
 
         return $properties;
     }
@@ -134,10 +136,30 @@ class Incident extends databaseObject {
 
             foreach ($userIdList as $userId) {
                 $user = new User($userId);
-                echo $userId;
                 $userProperties[] = $user->getProperties();
             }
             return $userProperties;
+        }
+    }
+
+    private function getComments() {
+        $colomnNames = array("Id");
+        $tableName = "comment";
+        $whereConditions = array("IncidentId = $this->id");
+        $result = $this->queryManager->select($colomnNames, $tableName, $whereConditions);
+
+        if ($result) {
+            foreach ($result as $row) {
+                $commentIdList[] = ($row["Id"]);
+            }
+
+            foreach ($commentIdList as $commentId) {
+                $comment = new Comment($commentId);
+                $commentProperties[] = $comment->getProperties();  
+            }
+            
+            
+            return $commentProperties;
         }
     }
 

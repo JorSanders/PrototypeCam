@@ -10,7 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\incidentContr
 $incidentController = new IncidentController();
 
 $properties = array("Archived = 1 ");
-//  $incidentController->createNewIncident($properties);
+//$incidentController->createNewIncident($properties);
 
 $incidentList = $incidentController->selectAllIncidents();
 

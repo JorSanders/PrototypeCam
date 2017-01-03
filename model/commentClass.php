@@ -1,19 +1,25 @@
 <?php
 
-class Comment {
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\databaseObjectClass.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\userClass.php";
 
-    private $message;
 
-    public function __construct() {
+class Comment extends databaseObject {
+
+    protected $columnNames = array("Id", "UserId", "IncidentId", "Message");
+    protected $tableName = "Comment";
+
+    public function getProperties($columnNames = NULL) {
+        $properties = parent::getProperties($columnNames);
         
+        $properties["User"] = $this->getUser($properties["UserId"]);
+        
+        return $properties;
     }
-
-    public function getMessage() {
-        return ($this->message);
-    }
-
-    public function setMessage($message) {
-        $this->message = $message;
+    
+    private function getUser($userId){
+        $user = new User($userId);
+        return $user->getProperties();
     }
 
 }
