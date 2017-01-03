@@ -6,6 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\priorityClass.php"
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\photoIncidentClass.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\statusClass.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\locationClass.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\userClass.php";
 
 class Incident extends databaseObject {
 
@@ -40,6 +41,12 @@ class Incident extends databaseObject {
         $locationProperties = $this->getLocation();
         $properties["locationProperties"] = $locationProperties;
 
+        /* get the users */
+        $userProperties = $this->getUsers();
+        $properties["userProperties"] = $userProperties;
+        
+        /* get the comments */
+        
 
         return $properties;
     }
@@ -111,6 +118,26 @@ class Incident extends databaseObject {
                 $locationProperties[] = $location->getProperties();
             }
             return $locationProperties;
+        }
+    }
+
+    private function getUsers() {
+        $colomnNames = array("UserId");
+        $tableName = "incident_user";
+        $whereConditions = array("IncidentId = $this->id");
+        $result = $this->queryManager->select($colomnNames, $tableName, $whereConditions);
+
+        if ($result) {
+            foreach ($result as $row) {
+                $userIdList[] = ($row["UserId"]);
+            }
+
+            foreach ($userIdList as $userId) {
+                $user = new User($userId);
+                echo $userId;
+                $userProperties[] = $user->getProperties();
+            }
+            return $userProperties;
         }
     }
 
