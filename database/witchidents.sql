@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 19 dec 2016 om 21:05
+-- Gegenereerd op: 03 jan 2017 om 13:37
 -- Serverversie: 10.1.19-MariaDB
 -- PHP-versie: 5.5.38
 
@@ -31,6 +31,14 @@ CREATE TABLE `category` (
   `Name` varchar(40) NOT NULL,
   `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `category`
+--
+
+INSERT INTO `category` (`Id`, `Name`, `Description`) VALUES
+(1, 'sanitair', 'alles wat met wc ofzo te maken heeft'),
+(2, 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -63,6 +71,14 @@ CREATE TABLE `incident` (
   `Deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `incident`
+--
+
+INSERT INTO `incident` (`Id`, `Title`, `Description`, `CategoryId`, `DateMentioned`, `DateFinished`, `PriorityId`, `Archived`, `Deleted`) VALUES
+(1, 'wc kapot', 'spoelt niet door', 1, '2016-12-07', NULL, 1, 1, 0),
+(2, 'lamp', NULL, NULL, NULL, NULL, NULL, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +91,14 @@ CREATE TABLE `incident_user` (
   `ResponsibilityId` int(11) DEFAULT NULL,
   `UserId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `incident_user`
+--
+
+INSERT INTO `incident_user` (`Id`, `IncidentId`, `ResponsibilityId`, `UserId`) VALUES
+(1, 1, NULL, 3),
+(2, 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -100,6 +124,14 @@ CREATE TABLE `location` (
   `TypeId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `location`
+--
+
+INSERT INTO `location` (`Id`, `IncidentId`, `TypeId`) VALUES
+(1, 1, 1),
+(2, 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -111,6 +143,14 @@ CREATE TABLE `location_type` (
   `Type` varchar(40) NOT NULL,
   `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `location_type`
+--
+
+INSERT INTO `location_type` (`Id`, `Type`, `Description`) VALUES
+(1, 'omschrijving', 'bij het management'),
+(2, 'omschrijving', 'kamer 4.30');
 
 -- --------------------------------------------------------
 
@@ -124,6 +164,14 @@ CREATE TABLE `photo_incident` (
   `FileLocation` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `photo_incident`
+--
+
+INSERT INTO `photo_incident` (`Id`, `IncidentId`, `FileLocation`) VALUES
+(1, 1, 'www.pagina.com'),
+(2, 1, 'www.pagina1.com');
+
 -- --------------------------------------------------------
 
 --
@@ -134,6 +182,13 @@ CREATE TABLE `priority` (
   `Id` int(11) NOT NULL,
   `Description` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `priority`
+--
+
+INSERT INTO `priority` (`Id`, `Description`) VALUES
+(1, 'hoog');
 
 -- --------------------------------------------------------
 
@@ -172,6 +227,14 @@ CREATE TABLE `status` (
   `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `status`
+--
+
+INSERT INTO `status` (`Id`, `IncidentId`, `NameId`, `Date`) VALUES
+(1, 1, 1, '2016-12-15'),
+(2, 1, 2, '2016-12-20');
+
 -- --------------------------------------------------------
 
 --
@@ -182,6 +245,14 @@ CREATE TABLE `status_name` (
   `Id` int(11) NOT NULL,
   `Name` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `status_name`
+--
+
+INSERT INTO `status_name` (`Id`, `Name`) VALUES
+(1, 'bezig'),
+(2, 'klaar');
 
 -- --------------------------------------------------------
 
@@ -194,7 +265,7 @@ CREATE TABLE `user` (
   `Firstname` varchar(35) NOT NULL,
   `Prefix` varchar(35) NOT NULL,
   `Surname` varchar(35) NOT NULL,
-  `E-mail` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -202,7 +273,7 @@ CREATE TABLE `user` (
 -- Gegevens worden geëxporteerd voor tabel `user`
 --
 
-INSERT INTO `user` (`Id`, `Firstname`, `Prefix`, `Surname`, `E-mail`, `Password`) VALUES
+INSERT INTO `user` (`Id`, `Firstname`, `Prefix`, `Surname`, `Email`, `Password`) VALUES
 (1, 'Jor', '', 'Sanders', 'jorsanders@hotmail.com', 'geheim'),
 (2, 'Lennard', '', 'Peerenboom', 'L.Peerenboom@hotmail.com', 'geheim'),
 (3, 'Marit', '', 'Besseling', 'M.Besseling@hotmail.com', 'geheim');
@@ -333,6 +404,11 @@ ALTER TABLE `user_role`
 --
 
 --
+-- AUTO_INCREMENT voor een tabel `category`
+--
+ALTER TABLE `category`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT voor een tabel `comment`
 --
 ALTER TABLE `comment`
@@ -341,12 +417,12 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT voor een tabel `incident`
 --
 ALTER TABLE `incident`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `incident_user`
 --
 ALTER TABLE `incident_user`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `linked_incidents`
 --
@@ -356,22 +432,22 @@ ALTER TABLE `linked_incidents`
 -- AUTO_INCREMENT voor een tabel `location`
 --
 ALTER TABLE `location`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `location_type`
 --
 ALTER TABLE `location_type`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `photo_incident`
 --
 ALTER TABLE `photo_incident`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `priority`
 --
 ALTER TABLE `priority`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `responsibility`
 --
@@ -386,12 +462,12 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT voor een tabel `status`
 --
 ALTER TABLE `status`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `status_name`
 --
 ALTER TABLE `status_name`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `user`
 --
@@ -417,8 +493,8 @@ ALTER TABLE `comment`
 -- Beperkingen voor tabel `incident`
 --
 ALTER TABLE `incident`
-  ADD CONSTRAINT `incident_ibfk_1` FOREIGN KEY (`CategoryId`) REFERENCES `category` (`Id`),
-  ADD CONSTRAINT `incident_ibfk_2` FOREIGN KEY (`PriorityId`) REFERENCES `priority` (`Id`);
+  ADD CONSTRAINT `incident_ibfk_2` FOREIGN KEY (`PriorityId`) REFERENCES `priority` (`Id`),
+  ADD CONSTRAINT `incident_ibfk_3` FOREIGN KEY (`CategoryId`) REFERENCES `category` (`Id`);
 
 --
 -- Beperkingen voor tabel `incident_user`
