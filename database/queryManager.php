@@ -85,6 +85,7 @@ class QueryManager {
             $whereConditions = "";
         }
 
+        /* the sql code */
         $this->sql = "UPDATE " . $tableName . " "
                 . " SET " . $properties . " "
                 . $whereConditions . ";";
@@ -92,7 +93,7 @@ class QueryManager {
         /* execute the query */
         $sqliResult = $this->mysqli->query($this->sql);
 
-        /* return the id of the new row */
+        /* return true if succes */
         if ($sqliResult) {
             return true;
         } else {

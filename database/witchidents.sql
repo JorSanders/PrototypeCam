@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 03 jan 2017 om 13:37
+-- Gegenereerd op: 04 jan 2017 om 12:31
 -- Serverversie: 10.1.19-MariaDB
 -- PHP-versie: 5.5.38
 
@@ -52,6 +52,13 @@ CREATE TABLE `comment` (
   `IncidentId` int(11) NOT NULL,
   `Message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `comment`
+--
+
+INSERT INTO `comment` (`Id`, `UserId`, `IncidentId`, `Message`) VALUES
+(1, 1, 1, 'ik wou alleen hoi zeggen');
 
 -- --------------------------------------------------------
 
@@ -121,16 +128,17 @@ CREATE TABLE `linked_incidents` (
 CREATE TABLE `location` (
   `Id` int(11) NOT NULL,
   `IncidentId` int(11) NOT NULL,
-  `TypeId` int(11) NOT NULL
+  `TypeId` int(11) NOT NULL,
+  `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `location`
 --
 
-INSERT INTO `location` (`Id`, `IncidentId`, `TypeId`) VALUES
-(1, 1, 1),
-(2, 1, 2);
+INSERT INTO `location` (`Id`, `IncidentId`, `TypeId`, `Description`) VALUES
+(1, 1, 1, 'bij kamer 4.32'),
+(2, 1, 1, 'bovenverdieping');
 
 -- --------------------------------------------------------
 
@@ -140,17 +148,15 @@ INSERT INTO `location` (`Id`, `IncidentId`, `TypeId`) VALUES
 
 CREATE TABLE `location_type` (
   `Id` int(11) NOT NULL,
-  `Type` varchar(40) NOT NULL,
-  `Description` text NOT NULL
+  `Type` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `location_type`
 --
 
-INSERT INTO `location_type` (`Id`, `Type`, `Description`) VALUES
-(1, 'omschrijving', 'bij het management'),
-(2, 'omschrijving', 'kamer 4.30');
+INSERT INTO `location_type` (`Id`, `Type`) VALUES
+(1, 'omschrijving');
 
 -- --------------------------------------------------------
 
@@ -412,7 +418,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT voor een tabel `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `incident`
 --

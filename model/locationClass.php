@@ -4,27 +4,26 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\databaseObjectClas
 
 class Location extends databaseObject {
 
-    protected $columnNames = array("Id", "IncidentId", "TypeId");
+    protected $columnNames = array("Id", "IncidentId", "TypeId", "Description");
     protected $tableName = "location";
 
     public function getProperties($columnNames = NULL) {
         $properties = parent::getProperties($columnNames);
-        $properties["locationDetails"] = $this->getLocationDetails();
+        $properties["Type"] = $this->getLocationType($properties["TypeId"]);
         return $properties;
     }
 
-    private function getLocationDetails() {
-        $colomnNames = array("Type", "Description");
+    private function getLocationType($typeId) {
+        $colomnNames = array("Type");
         $tableName = "location_type";
-        $whereConditions = array("Id = " . $this->id);
+        $whereConditions = array("Id = " . $typeId);
         $result = $this->queryManager->select($colomnNames, $tableName, $whereConditions);
 
         if ($result) {
             foreach ($result as $row) {
-                $locationDetails["Type"] = ($row["Type"]);
-                $locationDetails["Description"] = ($row["Description"]);
+                $locationType = ($row["Type"]);
             }
-            return $locationDetails;
+            return $locationType;
         }
     }
 
