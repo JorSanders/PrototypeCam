@@ -33,8 +33,12 @@ abstract class databaseObject {
 
     public function setProperties($properties) {
         $whereConditions = array("id = " . $this->id);
-
-        $this->queryManager->update($properties, $this->tableName, $whereConditions);
+        
+        foreach($this->columnNames as $columnName){
+            $sqlProperties[$columnName] = "$columnName = '$properties[$columnName]'";
+        }
+        
+        $this->queryManager->update($sqlProperties, $this->tableName, $whereConditions);
     }
 
 }

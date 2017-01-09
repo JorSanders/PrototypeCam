@@ -163,4 +163,25 @@ class Incident extends databaseObject {
         }
     }
 
+    public function setProperties($properties) {
+        /*
+         * id
+         * title
+         * description
+         * categoryid
+         * datementioned
+         * datefinished
+         * priorityid
+         * archived
+         * deleted
+         * 
+         * statusid
+         * status name 
+         * loaction id 
+         * location description
+         * photo location[]
+         * 
+         */
+        parent::setProperties($properties);
+    }
 }
