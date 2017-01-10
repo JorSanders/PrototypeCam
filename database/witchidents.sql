@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 04 jan 2017 om 12:31
+-- Gegenereerd op: 10 jan 2017 om 23:12
 -- Serverversie: 10.1.19-MariaDB
 -- PHP-versie: 5.5.38
 
@@ -83,7 +83,7 @@ CREATE TABLE `incident` (
 --
 
 INSERT INTO `incident` (`Id`, `Title`, `Description`, `CategoryId`, `DateMentioned`, `DateFinished`, `PriorityId`, `Archived`, `Deleted`) VALUES
-(1, 'wc kapot', 'spoelt niet door', 1, '2016-12-07', NULL, 1, 1, 0),
+(1, 'wc kapot', 'spoelt niet door', 1, '2016-12-07', NULL, 1, 0, 0),
 (2, 'lamp', NULL, NULL, NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
@@ -228,9 +228,9 @@ CREATE TABLE `role` (
 
 CREATE TABLE `status` (
   `Id` int(11) NOT NULL,
-  `IncidentId` int(11) NOT NULL,
-  `NameId` int(11) NOT NULL,
-  `Date` date NOT NULL
+  `IncidentId` int(11) DEFAULT NULL,
+  `NameId` int(11) DEFAULT NULL,
+  `Date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -238,8 +238,10 @@ CREATE TABLE `status` (
 --
 
 INSERT INTO `status` (`Id`, `IncidentId`, `NameId`, `Date`) VALUES
-(1, 1, 1, '2016-12-15'),
-(2, 1, 2, '2016-12-20');
+(1, 1, 1, '2016-12-15 00:00:00'),
+(2, 1, 2, '2016-12-20 00:00:00'),
+(55, 1, 1, '2017-01-10 15:22:07'),
+(56, 1, 1, '2017-01-10 23:04:03');
 
 -- --------------------------------------------------------
 
@@ -443,7 +445,7 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT voor een tabel `location_type`
 --
 ALTER TABLE `location_type`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `photo_incident`
 --
@@ -468,7 +470,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT voor een tabel `status`
 --
 ALTER TABLE `status`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT voor een tabel `status_name`
 --
