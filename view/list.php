@@ -1,6 +1,7 @@
 <?php
+
 $IncidentNew = array(
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "0"),
+    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "Sanitair", "25-11-2016", "25", "0", "Marit Besseling", "Kamer 2.45"),
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "1"),
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "2"),
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "3")
@@ -24,7 +25,7 @@ $IncidentDone = array(
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "0"),
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "1"),
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "2"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "3")
+    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "3",)
 );
 ?>
 
@@ -61,6 +62,8 @@ $IncidentDone = array(
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         
         <![endif]-->
+
+
     </head>
 
     <body>
@@ -78,6 +81,7 @@ $IncidentDone = array(
 
 
 
+<<<<<<< .merge_file_a06644
                 <!-- Incidenten status: Nieuw-->
                 <div class="col-md-3" >
                     <div class="ListCategory">
@@ -88,11 +92,24 @@ $IncidentDone = array(
                         <?php
                         foreach ($IncidentNew as $IncidentDetail) {
                             if ($IncidentDetail[5] === "1") {
+=======
+
+                    <!-- Incidenten status: Nieuw-->
+                    <div class="col-md-3" >
+                        <div class="ListCategory">
+                            <div class="Title">
+                                Nieuwe meldingen
+                            </div>
+                            <div class="BottomLine"></div>
+                            <?php
+                            foreach ($IncidentNew as $IncidentDetail) {
+                                if ($IncidentDetail[5] === "1") {
+>>>>>>> .merge_file_a07860
 
                                 echo "
                                 <div class='IncidentPriorityLow'>
                                     <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                        $IncidentDetail[0]
                                     </div>
                                     <div class='IncidentDescription'>
                                         <h4>Beschrijving: </h4>
@@ -104,7 +121,10 @@ $IncidentDone = array(
                                         <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
 
                                         <input class='btn btn-primary btn-danger btn-sm' type='button' value='Verwijderen'>
+
                                     </div>
+                                  
+                                  
                                 </div>
                                  
                              ";
@@ -121,8 +141,9 @@ $IncidentDone = array(
                                         $IncidentDetail[2] 
                                         <h4>Datum waarop incident is gemeld:</h4>
                                         $IncidentDetail[3] 
-                       
+                                     
                                     </div>
+                                  
                                 </div>
                                  
                              ";
@@ -148,17 +169,45 @@ $IncidentDone = array(
                                 echo "
                                 <div class='IncidentPriority'>
                                     <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                         &nbsp; $IncidentDetail[0]
+                                           <table class='table' border='0'>
+                                                <tr>
+                                                    <td width='50%'>$IncidentDetail[7]</td>
+                                                    <td align='right'> $IncidentDetail[3]</td>
+                                                </tr>
+                                            </table>
                                     </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
+                                    
+                                    <div class='IncidentDescription' >      
+                                        <table class='table' border='0'>
+                                            <tr>
+                                                <th width='25%'>Catergorie:</th>
+                                                <td>$IncidentDetail[2]</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <th>Gemeld door:</th>
+                                                <td>$IncidentDetail[6]</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th c>Beschrijving:</th>
+                                                <td >$IncidentDetail[1]</td>
+                                            </tr>
+
+                                            <tr>
+                                            <th>Toegewezen aan: </th>
+                                                <td>$IncidentDetail[6] </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Afgerond op: </th>
+                                                <td>$IncidentDetail[3] </td>
+                                            </tr>                                        
+
+                                        </table>
                                     </div>
+                                    
+
                                 </div>
                                  
                              ";

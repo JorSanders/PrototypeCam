@@ -18,6 +18,9 @@ body {
     height: 100%;
     font-family: forum;
 }
+div {
+
+}
 
 #header{
     background-image: url("/PrototypeCam/images/HeaderBackground.jpg");
@@ -75,6 +78,8 @@ a:active{
 
 /* Einde van de CSS voor het uiterlijk van de BASE*/
 
+
+
 /* Start van de CSS voor de meldingen*/
 .ListCategory{
 
@@ -118,8 +123,12 @@ a:active{
     width: 80%;
 }
 
-
 .IncidentTitle {
+    font-family:Arial;
+    font-size:15pt;
+    
+    color:#0488A3;
+
     background-color:#FCFAF3;
     margin-top: 2px;
     margin-left: 5px;
@@ -127,9 +136,14 @@ a:active{
     width: 90%;
     border-radius: 25px;
     cursor: pointer;
+    
+    
 }
+
 /*CSS om incidenten in- en uit te klappen*/
 .IncidentDescription {
+    font-family:forum;
+    font-size:10pt;
     display: none;
     padding : 5px;
 }
@@ -197,6 +211,7 @@ a:active{
     margin-bottom: 5px;
     padding: 1%;
 }
+
 /* Einde van de CSS voor de meldingen*/
 
 #NewReport{
