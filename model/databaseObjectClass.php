@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\database\queryManager.ph
 
 abstract class databaseObject {
 
-    protected $id;
+    public $id;
     protected $queryManager;
     protected $tableName;
     protected $columnNames;
@@ -38,11 +38,13 @@ abstract class databaseObject {
 
     public function setProperties($properties) {
         $whereConditions = array("id = " . $this->id);
-
         /* if the columnname is set in the properties update it */
         foreach ($this->columnNames as $columnName) {
             if (isset($properties[$columnName])) {
-                $sqlProperties[$columnName] = "$columnName = '$properties[$columnName]'";
+                if (is_string($properties[$columnName])){
+                    $properties[$columnName] = "'" . $properties[$columnName] . "'";
+                }
+                $sqlProperties[$columnName] = "$columnName = $properties[$columnName]";
             }
         }
 

@@ -7,15 +7,17 @@ $incidentController = new IncidentController();
 
 
 $incidentList = $incidentController->selectAllIncidents();
-/*
+
 echo "<pre>";
 print_r($incidentList);
 echo "</pre>";
- * 
- */
 
 
-$properties["StatusId"] = 1;
+
+$properties["StatusId"] = 2;
+$properties["LocationId"] = 1;
+$properties["LocationDescription"] = "beneden";
+
 $incidentController->updateIncident($properties, 1);
 
 

@@ -66,7 +66,9 @@ class QueryManager {
         if ($sqliResult) {
             return $this->mysqli->insert_id;
         } else {
-            echo "Failed to create row in database<br>";
+            echo "Failed to create row in database<br>"
+            . "Query: $this->sql"
+            ;
         }
     }
 
@@ -84,7 +86,6 @@ class QueryManager {
         } else {
             $whereConditions = "";
         }
-
         /* the sql code */
         $this->sql = "UPDATE " . $tableName . " "
                 . " SET " . $properties . " "
@@ -98,7 +99,7 @@ class QueryManager {
             return true;
         } else {
             echo "Failed to execute update statement<br>"
-            // . "Query: $this->sql"
+            . "Query: $this->sql"
             ;
         }
     }
