@@ -1,16 +1,5 @@
-<?php
-$menu = array(
-    array("Home", "index.php"),
-    array("Overzichten", "list.php"),
-
-    array("Statistieken", "index.php"),
-    array("Gebruikers", "index.php"),
-    array("Archief", "index.php")
-);
-?>
-
 <!DOCTYPE html>
-<html lang="nl" style="height:100%;">
+<html lang="nl">
 
     <head>
 
@@ -39,56 +28,19 @@ $menu = array(
         <![endif]-->
     </head>
 
-    <body style="height:100%;">
+    <body>
+        <!-- De header + Menu -->
+        <?php
+        include 'Menu.php';
+        ?>
 
-        <div style="height:100%;" class="container-fluid"  >  
+            <div id="background" class="row" >
 
-            <div id="header" class="row">
-
-                <div id="logo"class="col-md-4">
-
-                </div>
-              <div id="logo" class="col-md-4">
-                    <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
-                </div>
-                <div id="logo"class="col-md-4">
-
-                </div>
-            </div>
-
-            <!-- Het menu -->
-
-            <div id="menu" class="row">
-                <div  class="col-md-12">
-                    
-                    <div class="col-md-1">
-
-                </div>
-                    
-                    <?php
-                    foreach ($menu as $menuItem) {
-                        echo" <div   class='col-md-2'>
-                    <a href='$menuItem[1]'>$menuItem[0]</a>
-                </div>    ";
-                    }
-                    ?>
-                    <div class="col-md-1">
-
-                </div>
-                </div>
-            </div>
-
-            <div style="height:100%;" id="background"  class="row" >
-
-                <div style="height:100%;" id="content" class="col-md-12">
+                <div id="content" class="col-md-12" >
 
 
                 </div>
 
-            </div>
-            
-            <div id="footer">
-                Dit is de footer.
             </div>
 
         </div>

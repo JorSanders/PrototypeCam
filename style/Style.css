@@ -12,23 +12,22 @@ Blauw		#0488A3
 */
 
 /*Start CSS-code voor BASE*/
-html {
-    height: 100%;
-}
 body {
+    background-color: #F9F3D8;
+    width: 100%;
     height: 100%;
+    font-family: forum;
 }
 
 #header{
     background-image: url("/PrototypeCam/images/HeaderBackground.jpg");
-    background-repeat: no-repeat;
-    height:150px;
+    position: relative;
+    background-size: cover;
 }
 
 #logo{
+    position: relative;
     text-align:center;
-    z-index: 1;
-    height:100%;
 }
 
 /* De menu balk */
@@ -36,52 +35,25 @@ body {
     background-color: #ffffff;
     border-top:solid 5px #0488A3;
     border-bottom:solid 5px #0488A3;
-
     font-family: Forum, Neuton;
     font-size:15pt;
-    text-align:center;
-
-    height:60px;
-  
-    display: flex;               /* establish flex container */
-    align-items: center;  
-}    
-a#menuLink:visited{
-    color:#554A15;
-    text-decoration:none;
 }
-a#menuLink:link{
-    color:#554A15;
-    text-decoration:none;
-}
-a#menuLink:hover{
-    color:#554A15;
-    text-decoration:none;
-}
-a#menuLink:active{
-    color:#554A15;
-    text-decoration:none;
-}
-/* einde css van Menu balk*/
-
 
 #background{
     background-color: #F9F3D8;
     position:relative;
     height:100%;
     padding:15px;
+    width: 100%;
 }
 #content{
-    display: fixed; 
-    border:solid 2px black;
-    height:100%; 
+
+    border:solid 2px #ffffff;
+    height: 100%;
     padding:5px;
-}
-
-#footer {
-    height:25px;
-    width:100%;
-
+    overflow: auto;
+    width: 99%;
+    left: 1%;
 }
 
 a:visited{
@@ -105,14 +77,13 @@ a:active{
 
 /* Start van de CSS voor de meldingen*/
 .ListCategory{
-    position: relative;
+
     background-color: #FCFAF3;
     border-width: 2px;
     height: 100%;
-    overflow: auto;
     bottom: 5%;
     border-radius: 25px;
-    padding:5px; 
+    padding:5px;
 }
 
 .TitleCategory{
@@ -127,13 +98,15 @@ a:active{
     font-size: 130%;
     padding: 3px;
 }
+
 .Title{
     color:#0488A3;
-     font-family: Forum, Neuton;
+    font-family: Forum, Neuton;
     font-size:12pt;
     text-align: center;
     padding: 10px;
 }
+
 .BottomLine{
     position: relative;
     border-bottom: 2px solid;
@@ -160,9 +133,6 @@ a:active{
     display: none;
     padding : 5px;
 }
-
-
-
 
 .IncidentPriority{
     position: relative;
@@ -229,7 +199,58 @@ a:active{
 }
 /* Einde van de CSS voor de meldingen*/
 
-
 #NewReport{
-    text-align:center;
+
+}
+
+.Statistic {
+    position: fixed;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #0488A3;
+    width: 500px;
+    height: 250px;
+}
+
+#table {
+    background-color: #fefefe;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+th {
+    background-color: #0488A3;
+    color: #fefefe;
+}
+
+.table-curved {
+    border-collapse: separate;
+}
+.table-curved {
+    border: solid #ccc 1px;
+    border-radius: 6px;
+    border-left:0px;
+}
+.table-curved td, .table-curved th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+.table-curved th {
+    border-top: none;
+}
+.table-curved th:first-child {
+    border-radius: 6px 0 0 0;
+}
+.table-curved th:last-child {
+    border-radius: 0 6px 0 0;
+}
+.table-curved th:only-child{
+    border-radius: 6px 6px 0 0;
+}
+.table-curved tr:last-child td:first-child {
+    border-radius: 0 0 0 6px;
+}
+.table-curved tr:last-child td:last-child {
+    border-radius: 0 0 6px 0;
 }

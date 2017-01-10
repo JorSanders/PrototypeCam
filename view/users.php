@@ -1,24 +1,19 @@
 <?php
-$menu = array(
-    array("Home", "index.php"),
-    array("Overzichten", "list.php"),
-    array("Statistieken", "statistics.php"),
-    array("Gebruikers", "users.php"),
-    array("Archief", "archive.php")
+$User = array(
+    array("1", "Jor Sanders", "jor.sanders@hotmail.com", "25-11-2016", "26-22-2016"),
+    array("2", "Marit Besseling", "marit.besseling@hotmail.com", "25-11-2016", "X"),
+    array("3", "Tessa Scheuder", "tessa.scheuder@hotmail.com", "25-11-2016", "X"),
+    array("4", "Lennard Peerenboom", "lennard.peerenboom@hotmail.com", "25-11-2016", "28-12-2016")
 );
 ?>
 
 <!DOCTYPE html>
 <html lang="nl">
-
     <head>
-
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
 
         <title> Witchidents </title>
 
@@ -27,81 +22,54 @@ $menu = array(
         <link href="/PrototypeCam/library/Bootstrap/font-awesome.min.css" rel="stylesheet">
         <link href="../style/Style.css" rel="stylesheet">
 
+        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+        <script src="../js/incidentAnimation.js"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
      
          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         
         <![endif]-->
     </head>
 
     <body>
 
-        <div class="container-fluid">  
+        <!-- De header + Menu -->
+        <?php
+        include 'Menu.php';
+        ?>
 
-            <div id="header" class="row">
+        <div id="background" class="row" >
 
-                <div id="logo"class="col-md-4">
+            <div id="content" class="col-md-12" >
 
-                </div>
-                <div id="logo" class="col-md-4">
-                    <img src="/PrototypeCam/images/flag_Witchidents_logo.png" height="100%">
-                </div>
-                <div id="logo"class="col-md-4">
-
-                </div>
-            </div>
-
-            <!-- Het menu -->
-
-            <div id="menu" class="row">
-                <div  class="col-md-12">
-
-                    <div class="col-md-1">
-
-                    </div>
-
-                    <?php
-                    foreach ($menu as $menuItem) {
-                        echo" <div   class='col-md-2'>
-                    <a href='$menuItem[1]'>$menuItem[0]</a>
-                </div>    ";
-                    }
-                    ?>
-                    <div class="col-md-1">
-
-                    </div>
+                <div id="table">
+                    <table  class="table table-sriped table-bordered table-hover table-responsive table-curved " >
+                        <tr>
+                            <th>#</th>
+                            <th>Naam</th>
+                            <th>Email</th>
+                            <th>Datum aangemaakt</th>
+                            <th>Datum afgemaakt</th>
+                        </tr>
+                        <?php
+                            foreach ($User as $user) {
+                                echo" <tr>
+                                        <td>$user[0]</td>
+                                        <td>$user[1]</td>
+                                        <td>$user[2]</td>
+                                        <td>$user[3]</td>
+                                        <td>$user[4]</td>
+                                    </tr> 
+                                ";
+                            }   
+                        ?>
+                    </table>
                 </div>
             </div>
-
-            <div id="background" class="row" >
-
-                <div id="content" class="col-md-12" >
-USERS
-                    <!--   content<br>
-                       <div class="col-md-3" >
-                           a-test div 3 kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           b-test div  kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           c-test div  kolommen breed
-                       </div>
-                       <div class="col-md-3" >
-                           D-test div 3 kolommen breed
-                       </div>-->
-                </div>
-
-            </div>
-
-            <div id="footer">
-                Dit is de footer.
-            </div>
-
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
