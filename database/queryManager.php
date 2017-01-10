@@ -97,7 +97,9 @@ class QueryManager {
         if ($sqliResult) {
             return true;
         } else {
-            echo "Failed execute update statement<br>";
+            echo "Failed to execute update statement<br>"
+            // . "Query: $this->sql"
+            ;
         }
     }
 

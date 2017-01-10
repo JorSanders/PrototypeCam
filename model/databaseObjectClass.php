@@ -8,10 +8,15 @@ abstract class databaseObject {
     protected $queryManager;
     protected $tableName;
     protected $columnNames;
+    protected $properties;
 
-    public function __construct($id) {
-        $this->id = $id;
+    public function __construct($id = NULL) {
         $this->queryManager = new QueryManager;
+        if (isset($id)) {
+            $this->id = $id;
+        } else {
+            $this->id = $this->queryManager->createEmptyRow($this->tableName);
+        }
     }
 
     public function getProperties($columnNames = NULL) {
@@ -26,19 +31,24 @@ abstract class databaseObject {
          * so the values are the first values from the frist index from the result aray
          */
         $result = $this->queryManager->select($columnNames, $this->tableName, $whereConditions);
-        $properties = $result[0];
+        $this->properties = $result[0];
 
-        return ($properties);
+        return ($this->properties);
     }
 
     public function setProperties($properties) {
         $whereConditions = array("id = " . $this->id);
-        
-        foreach($this->columnNames as $columnName){
-            $sqlProperties[$columnName] = "$columnName = '$properties[$columnName]'";
+
+        /* if the columnname is set in the properties update it */
+        foreach ($this->columnNames as $columnName) {
+            if (isset($properties[$columnName])) {
+                $sqlProperties[$columnName] = "$columnName = '$properties[$columnName]'";
+            }
         }
-        
-        $this->queryManager->update($sqlProperties, $this->tableName, $whereConditions);
+
+        if (isset($sqlProperties)) {
+            $this->queryManager->update($sqlProperties, $this->tableName, $whereConditions);
+        }
     }
 
 }

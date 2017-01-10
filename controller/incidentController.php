@@ -34,12 +34,6 @@ class IncidentController {
     public function updateIncident($properties, $incidentId) {
         $incident = new Incident($incidentId);
         $incident->setProperties($properties);
-
-        /* if location is set update it */
-        foreach ($properties["Location"] as $locationProperties) {
-            $location = new Location($locationProperties["id"]);
-            $location->setProperties($locationProperties);
-        }
     }
 
 }

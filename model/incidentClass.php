@@ -11,46 +11,46 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\commentClass.php";
 
 class Incident extends databaseObject {
 
-    protected $columnNames = array("Id", "Description", "CategoryId", "DateMentioned",
+    protected $columnNames = array("Id", "Title", "Description", "CategoryId", "DateMentioned",
         "DateFinished", "PriorityId", "Archived", "Deleted");
     protected $tableName = "incident";
 
     public function getProperties($columnNames = NULL) {
-        $properties = parent::getProperties($columnNames);
+        $this->properties = parent::getProperties($columnNames);
 
         /* get the priority */
-        if (isset($properties["PriorityId"])) {
-            $priority = $this->getPriority($properties["PriorityId"]);
-            $properties["Priority"] = $priority->getProperties();
+        if (isset($this->properties["PriorityId"])) {
+            $priority = $this->getPriority($this->properties["PriorityId"]);
+            $this->properties["Priority"] = $priority->getProperties();
         }
 
         /* get the category */
-        if (isset($properties["CategoryId"])) {
-            $category = $this->getCategory($properties["CategoryId"]);
-            $properties["Category"] = $category->getProperties();
+        if (isset($this->properties["CategoryId"])) {
+            $category = $this->getCategory($this->properties["CategoryId"]);
+            $this->properties["Category"] = $category->getProperties();
         }
 
         /* get the photos */
         $photos = $this->getPhotos();
-        $properties["Photos"] = $photos;
+        $this->properties["Photos"] = $photos;
 
         /* get the status */
         $status = $this->getStatus();
-        $properties["Status"] = $status;
+        $this->properties["Status"] = $status;
 
         /* get the location */
         $location = $this->getLocation();
-        $properties["Location"] = $location;
+        $this->properties["Location"] = $location;
 
         /* get the users */
         $users = $this->getUsers();
-        $properties["Users"] = $users;
+        $this->properties["Users"] = $users;
 
         /* get the comments */
         $comments = $this->getComments();
-        $properties["Comments"]  = $comments;
+        $this->properties["Comments"] = $comments;
 
-        return $properties;
+        return $this->properties;
     }
 
     private function getCategory($id) {
@@ -155,39 +155,42 @@ class Incident extends databaseObject {
 
             foreach ($commentIdList as $commentId) {
                 $comment = new Comment($commentId);
-                $commentProperties[] = $comment->getProperties();  
+                $commentProperties[] = $comment->getProperties();
             }
-            
-            
+
+
             return $commentProperties;
         }
     }
 
     public function setProperties($properties) {
-        /*
-         * id
-         * title
-         * description
-         * categoryid
-         * datementioned
-         * datefinished
-         * priorityid
-         * archived
-         * deleted
-         * 
-         * statusid
-         * status name 
-         * loaction id 
-         * location description
-         * photo location[]
-         * 
-         */
-        
-        foreach($this->columnNames as $columnName){
-            if ($isset($properties[$columnName])){
-                //aply logic here
+        foreach ($this->columnNames as $columnName) {
+            /* update the incident table */
+            if (isset($properties[$columnName])) {
+                $incidentProperties[$columnName] = $properties[$columnName];
+                parent::setProperties($incidentProperties);
             }
         }
-        parent::setProperties($properties);
+
+        /* update the status */
+        if (isset($properties["StatusId"])) {
+            $status = new Status();
+
+            $statusProperties["IncidentId"] = $this->id;
+            $statusProperties["NameId"] = $properties["StatusId"];
+
+            if (isset($this->properties)) {
+                
+            } else {
+                $this->properties = $this->getProperties();
+            }
+            $status->setProperties($statusProperties);
+        }
+        /* update the location */
+        if (isset($properties["LocationId"]) &&
+                isset($properties["LocationDescription"])) {
+            //aply logic here
+        }
     }
+
 }
