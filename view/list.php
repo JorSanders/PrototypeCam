@@ -125,7 +125,7 @@ $IncidentDone = array(
                                          &nbsp; $IncidentDetail[0]
                                            <table class='table' border='0'>
                                                 <tr>
-                                                    <td width='50%'>$IncidentDetail[7]</td>
+                                                    <td>$IncidentDetail[7]</td>
                                                     <td align='right'> $IncidentDetail[3]</td>
                                                 </tr>
                                             </table>

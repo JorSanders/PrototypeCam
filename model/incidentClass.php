@@ -11,7 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\model\commentClass.php";
 
 class Incident extends databaseObject {
 
-    protected $columnNames = array("Id", "Description", "CategoryId", "DateMentioned",
+    protected $columnNames = array("Id", "Title", "Description", "CategoryId", "DateMentioned",
         "DateFinished", "PriorityId", "Archived", "Deleted");
     protected $tableName = "incident";
 

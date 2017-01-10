@@ -58,7 +58,6 @@ $menu = array(
                     <p>(vul hier extra tekst bij)</p>
                 </div>
                 <div class="col-md-4" id="NewReport">
-                    <br><br><br><br> 
                     <!-- Het meldingsformulier -->
                     <form action="" method="POST">
                         Onderwerp
@@ -66,7 +65,11 @@ $menu = array(
                         Locatie
                         <input class="form-control input-sm" type="text" placeholder="Locatie"> <br>
                         Beschrijving
-                        <input class="form-control input-sm" type="text" placeholder="Beschrijving"> <br>
+
+                        <textarea class="form-control input-sm" placeholder="Beschrijving" rows=10 cols=50></textarea><br><br>
+                        
+                        
+                        
                         Foto
                         <input class="form-control input-sm" type="file" placeholder="Upload foto"> <br>
                         Email
