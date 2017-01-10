@@ -1,5 +1,4 @@
 <?php
-
 $IncidentNew = array(
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "Sanitair", "25-11-2016", "25", "0", "Marit Besseling", "Kamer 2.45"),
     array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "1"),
@@ -31,39 +30,26 @@ $IncidentDone = array(
 
 <!DOCTYPE html>
 <html lang="nl">
-
     <head>
-
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-
         <title> Witchidents </title>
-
         <!-- Bootstrap -->
         <link href="/PrototypeCam/library/Bootstrap/bootstrap.min.css" rel="stylesheet">
         <link href="/PrototypeCam/library/Bootstrap/font-awesome.min.css" rel="stylesheet">
         <link href="../style/Style.css" rel="stylesheet">
 
-
         <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
         <script src="../js/incidentAnimation.js"></script>
 
-
-
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-     
-         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        
+        <!--[if lt IE 9]>     
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>        
         <![endif]-->
-
-
     </head>
 
     <body>
@@ -71,17 +57,8 @@ $IncidentDone = array(
         <?php
         include 'Menu.php';
         ?>
-
-
         <div id="background" class="row" >
-
-
             <div id="content" class="col-md-12" >
-
-
-
-
-<<<<<<< .merge_file_a06644
                 <!-- Incidenten status: Nieuw-->
                 <div class="col-md-3" >
                     <div class="ListCategory">
@@ -92,20 +69,6 @@ $IncidentDone = array(
                         <?php
                         foreach ($IncidentNew as $IncidentDetail) {
                             if ($IncidentDetail[5] === "1") {
-=======
-
-                    <!-- Incidenten status: Nieuw-->
-                    <div class="col-md-3" >
-                        <div class="ListCategory">
-                            <div class="Title">
-                                Nieuwe meldingen
-                            </div>
-                            <div class="BottomLine"></div>
-                            <?php
-                            foreach ($IncidentNew as $IncidentDetail) {
-                                if ($IncidentDetail[5] === "1") {
->>>>>>> .merge_file_a07860
-
                                 echo "
                                 <div class='IncidentPriorityLow'>
                                     <div class='IncidentTitle'>
@@ -119,14 +82,9 @@ $IncidentDone = array(
                                         <h4>Datum waarop incident is gemeld:</h4>
                                         $IncidentDetail[3] 
                                         <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
-
                                         <input class='btn btn-primary btn-danger btn-sm' type='button' value='Verwijderen'>
-
-                                    </div>
-                                  
-                                  
+                                    </div> 
                                 </div>
-                                 
                              ";
                             } elseif ($IncidentDetail[5] === "2") {
                                 echo "
@@ -141,11 +99,8 @@ $IncidentDone = array(
                                         $IncidentDetail[2] 
                                         <h4>Datum waarop incident is gemeld:</h4>
                                         $IncidentDetail[3] 
-                                     
                                     </div>
-                                  
                                 </div>
-                                 
                              ";
                             } elseif ($IncidentDetail[5] === "3") {
                                 echo "
@@ -160,10 +115,8 @@ $IncidentDone = array(
                                         $IncidentDetail[2] 
                                         <h4>Datum waarop incident is gemeld:</h4>
                                         $IncidentDetail[3] 
-                       
                                     </div>
                                 </div>
-                                 
                              ";
                             } else {
                                 echo "
@@ -202,14 +155,10 @@ $IncidentDone = array(
                                             <tr>
                                                 <th>Afgerond op: </th>
                                                 <td>$IncidentDetail[3] </td>
-                                            </tr>                                        
-
+                                            </tr> 
                                         </table>
                                     </div>
-                                    
-
                                 </div>
-                                 
                              ";
                             }
                         }
