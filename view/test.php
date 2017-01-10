@@ -9,9 +9,8 @@ $properties = array("Archived = 1 ");
 
 $incidentList = $incidentController->selectAllIncidents();
 
-foreach ($incidentList as $incident) {
-    echo "<pre>";
-    print_r($incident);
-    echo "</pre>";
-}
+echo "<pre>";
+print_r($incidentList);
+echo "</pre>";
+
 

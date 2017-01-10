@@ -182,6 +182,12 @@ class Incident extends databaseObject {
          * photo location[]
          * 
          */
+        
+        foreach($this->columnNames as $columnName){
+            if ($isset($properties[$columnName])){
+                //aply logic here
+            }
+        }
         parent::setProperties($properties);
     }
 }

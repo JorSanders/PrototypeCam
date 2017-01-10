@@ -19,7 +19,7 @@ class IncidentController {
 
         foreach ($result as $row) {
             $incident = new Incident($row["Id"]);
-            $incidentList[] = $incident->getProperties();
+            $incidentList[$row["Id"]] = $incident->getProperties();
         }
         return $incidentList;
     }
