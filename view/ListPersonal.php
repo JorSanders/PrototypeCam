@@ -39,7 +39,7 @@
     <body>
         <div class="Page">
             <?php
-            require_once("menu.php");
+            require_once($_SERVER["DOCUMENT_ROOT"] . "/prototypeCAM/includes/menu.php");
             ?>
             <div class="Content">
                 <div class="MenuCategory">

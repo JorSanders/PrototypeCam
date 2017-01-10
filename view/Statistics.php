@@ -33,7 +33,7 @@
 
         <!-- De header + Menu -->
         <?php
-        include 'Menu.php';
+        require_once($_SERVER["DOCUMENT_ROOT"] . "/prototypeCAM/includes/menu.php");
         ?>
 
         <div id="background" class="row" >

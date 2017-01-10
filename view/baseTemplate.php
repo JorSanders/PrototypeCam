@@ -31,22 +31,22 @@
     <body>
         <!-- De header + Menu -->
         <?php
-        include 'Menu.php';
+        require_once($_SERVER["DOCUMENT_ROOT"] . "/prototypeCAM/includes/menu.php");
         ?>
 
-            <div id="background" class="row" >
+        <div id="background" class="row" >
 
-                <div id="content" class="col-md-12" >
+            <div id="content" class="col-md-12" >
 
-
-                </div>
 
             </div>
 
         </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="../js/bootstrap.min.js"></script>
-    </body>
+
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+</body>
 </html>

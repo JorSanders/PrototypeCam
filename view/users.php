@@ -39,7 +39,7 @@ $User = array(
 
         <!-- De header + Menu -->
         <?php
-        include 'Menu.php';
+        require_once($_SERVER["DOCUMENT_ROOT"] . "/prototypeCAM/includes/menu.php");
         ?>
 
         <div id="background" class="row" >
@@ -56,8 +56,8 @@ $User = array(
                             <th>Datum afgemaakt</th>
                         </tr>
                         <?php
-                            foreach ($User as $user) {
-                                echo" <tr>
+                        foreach ($User as $user) {
+                            echo" <tr>
                                         <td>$user[0]</td>
                                         <td>$user[1]</td>
                                         <td>$user[2]</td>
@@ -65,7 +65,7 @@ $User = array(
                                         <td>$user[4]</td>
                                     </tr> 
                                 ";
-                            }   
+                        }
                         ?>
                     </table>
                 </div>

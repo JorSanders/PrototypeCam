@@ -42,7 +42,7 @@ $menu = array(
 
         <!-- De header + Menu -->
         <?php
-        include 'Menu.php';
+        require_once($_SERVER["DOCUMENT_ROOT"] . "/prototypeCAM/includes/menu.php");
         ?>
 
         <div id="background" class="row" >
@@ -54,7 +54,7 @@ $menu = array(
 
                     <p>Het incidentmeldings systeem van Witchworld.<br>
                         Hier kunt u al uw problemen kwijt.</p>
-                    
+
                     <p>(vul hier extra tekst bij)</p>
                 </div>
                 <div class="col-md-4" id="NewReport">
