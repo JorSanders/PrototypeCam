@@ -32,6 +32,7 @@ if (isset($_GET["Email"])) {
 }
 
 if ($valid) {
+    header("Location: succes.php");
     require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\incidentController.php";
     $incidentController = new IncidentController();
     $properties = $_GET;
@@ -68,8 +69,7 @@ if ($valid) {
                 <div class="col-md-4" >
                     <p><h4>Welkom bij Witchidents,</h4></p>
                     <p>Het incidentmeldings systeem van Witchworld.<br>
-                        Hier kunt u al uw problemen kwijt.</p>                    
-                    <p>(vul hier extra tekst bij)</p>
+                        Hier kunt u incidenten melden.</p> 
                 </div>
                 <div class="col-md-4" id="NewReport">
                     <!-- Het meldingsformulier -->
@@ -81,7 +81,7 @@ if ($valid) {
                         <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="LocationId" value="1">
                         <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="StatusId" value="1">
                         Beschrijving
-                        <textarea required rows=10 cols=50 class="form-control input-sm" type="text" placeholder="Beschrijving" name="Description" value="<?php echo $description; ?>"> </textarea> <br><br>
+                        <textarea required rows=10 cols=50 class="form-control input-sm" type="text" placeholder="Beschrijving" name="Description"><?php echo $description; ?></textarea> <br><br>
                         Foto
                         <input class="form-control input-sm" type="file" placeholder="Upload foto" name="Photo" value="<?php echo $photo; ?>"> <br>
                         Email

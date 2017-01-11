@@ -1,4 +1,44 @@
 <!DOCTYPE html>
+
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\incidentController.php";
+$incidentController = new IncidentController();
+
+$incident = $incidentController->getIncidentById($_GET['id']);
+
+$valid = true;
+if (isset($_GET["Title"])) {
+    $title = $_GET["Title"];
+} else {
+    $title = $incident["Title"];
+    $valid = false;
+}
+if (isset($_GET["LocationDescription"])) {
+    $locationDescription = $_GET["LocationDescription"];
+} else {
+    $locationDescription = $incident["Location"][0]["Description"];
+    $valid = false;
+}
+if (isset($_GET["Description"])) {
+    $description = $_GET["Description"];
+} else {
+    $description = $incident["Description"];
+    $valid = false;
+}
+if (isset($_GET["Status"])) {
+    $status = $_GET["Status"];
+} else {
+    $status = $incident["Status"][0]["NameId"];
+    $valid = false;
+}
+
+
+if ($valid) {
+    $properties = $_GET;
+    $incidentController->updateIncident($properties, $incident["Id"]);
+    //header("location: list.php");
+}
+?>
 <html lang="nl">
     <head>
         <meta charset="utf-8">
@@ -31,21 +71,24 @@
                 </div>
                 <div class="col-md-4" id="NewReport">
                     <!-- Het meldingsformulier -->
-                    <form action="" method="POST">
+                    <form action="" method="GET">
                         Onderwerp
-                        <input class="form-control input-sm" type="text" placeholder="Onderwerp"> <br>
-                        Status
-                        <input class="form-control input-sm" type="text" placeholder="Status"> <br>
-                        Prioriteit
-                        <input class="form-control input-sm" type="text" placeholder="Prioriteit"> <br>
+                        <input required class="form-control input-sm" type="text" placeholder="Onderwerp" name="Title" value="<?php echo $title; ?>"> <br>
+                        Status<br>
+                        <select name="Status">
+                            <option value="1">In de wacht</option>
+                            <option value="2">Bezig</option>
+                            <option value="3">Afgerond</option>
+                        </select>
+                        <br>
                         Locatie
-                        <input class="form-control input-sm" type="text" placeholder="Locatie"> <br>
+                        <input required class="form-control input-sm" type="text" placeholder="Locatie" name="LocationDescription" value="<?php echo $locationDescription; ?>"> <br>
+                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="LocationId" value="1">
+                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="StatusId" value="1">
+                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="id" value="<?php echo $_GET['id']; ?>">
                         Beschrijving
-                        <input class="form-control input-sm" type="text" placeholder="Beschrijving"> <br>
-                        Foto
-                        <input class="form-control input-sm" type="file" placeholder="Upload foto"> <br>
-                        Email
-                        <input class="form-control input-sm" type="text" placeholder="Email"> <br>
+                        <textarea required rows=10 cols=50 class="form-control input-sm" type="text" placeholder="Beschrijving" name="Description"><?php echo $description; ?></textarea> <br><br>
+
                         <input class="btn btn-default btn-sm" type="submit">
                     </form>
                 </div>

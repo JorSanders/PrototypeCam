@@ -79,7 +79,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                                         </tr>";
                                     }
                                     echo"</table>
-                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                                                 </div>
                                                             </div>
                                                         ";
@@ -121,7 +121,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                             </tr>";
                                     }
                                     echo"</table>
-                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                             </div>
                                         </div>
                                     ";
@@ -163,7 +163,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                         </tr>";
                                     }
                                     echo"</table>
-                                                    <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                                 </div>
                                             </div>
                                         ";
@@ -209,7 +209,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                                     </tr>";
                                     }
                                     echo"</table>
-                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                                     </div>
                                                     </div>
                                                 
@@ -266,7 +266,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                             </tr>";
                                     }
                                     echo"</table>
-                                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                                     </div>
                                                 </div>
                                             ";
@@ -308,7 +308,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                 </tr>";
                                     }
                                     echo"</table>
-                                <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                 </div>
                             </div>
                         ";
@@ -350,7 +350,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                             </tr>";
                                     }
                                     echo"</table>
-                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                     </div>
                                 </div>
                             ";
@@ -392,7 +392,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                         </tr>";
                                     }
                                     echo"</table>
-                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                         </div>
                                     </div>
                                 ";
@@ -447,7 +447,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                             </tr>";
                                     }
                                     echo"</table>
-                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                     </div>
                                 </div>
                             ";
@@ -489,7 +489,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                 </tr>";
                                     }
                                     echo"</table>
-                <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                 </div>
             </div>
         ";
@@ -531,7 +531,7 @@ $incidentList = $incidentController->selectAllIncidents();
                             </tr>";
                                     }
                                     echo"</table>
-                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                     </div>
                 </div>
             ";
@@ -573,7 +573,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                         </tr>";
                                     }
                                     echo"</table>
-                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                         </div>
                     </div>
                 ";
@@ -628,7 +628,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                             </tr>";
                                     }
                                     echo"</table>
-                                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                                     </div>
                                                 </div>
                                             ";
@@ -670,7 +670,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                 </tr>";
                                     }
                                     echo"</table>
-                                <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                 </div>
                             </div>
                         ";
@@ -712,7 +712,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                             </tr>";
                                     }
                                     echo"</table>
-                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                     </div>
                                 </div>
                             ";
@@ -754,7 +754,7 @@ $incidentList = $incidentController->selectAllIncidents();
                                                         </tr>";
                                     }
                                     echo"</table>
-                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php?id=" .$incident["Id"]. "'> Aanpassen</a>
                                         </div>
                                     </div>
                                 ";
