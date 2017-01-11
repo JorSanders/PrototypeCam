@@ -50,8 +50,6 @@ div {
     width: 100%;
 }
 #content{
-
-    border:solid 2px #ffffff;
     height: 100%;
     padding:5px;
     overflow: auto;
@@ -77,8 +75,6 @@ a:active{
 }
 
 /* Einde van de CSS voor het uiterlijk van de BASE*/
-
-
 
 /* Start van de CSS voor de meldingen*/
 .ListCategory{
