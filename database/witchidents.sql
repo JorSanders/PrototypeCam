@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 jan 2017 om 23:12
+-- Gegenereerd op: 11 jan 2017 om 20:07
 -- Serverversie: 10.1.19-MariaDB
--- PHP-versie: 5.5.38
+-- PHP-versie: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -38,7 +38,8 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`Id`, `Name`, `Description`) VALUES
 (1, 'sanitair', 'alles wat met wc ofzo te maken heeft'),
-(2, 'test', 'test');
+(2, 'Facalitair', 'test'),
+(3, 'Groen', 'gras enzo');
 
 -- --------------------------------------------------------
 
@@ -83,8 +84,15 @@ CREATE TABLE `incident` (
 --
 
 INSERT INTO `incident` (`Id`, `Title`, `Description`, `CategoryId`, `DateMentioned`, `DateFinished`, `PriorityId`, `Archived`, `Deleted`) VALUES
-(1, 'wc kapot', 'spoelt niet door', 1, '2016-12-07', NULL, 1, 0, 0),
-(2, 'lamp', NULL, NULL, NULL, NULL, NULL, 0, 0);
+(1, 'wc kapot', 'spoelt niet door', 1, '2016-12-07', NULL, 1, 1, 0),
+(2, 'lamp', 'het is een lamp', 1, '2017-01-19', NULL, 2, 0, 0),
+(3, 'appel', 'Ik wil een appel', 1, '2017-01-16', NULL, 3, 0, 0),
+(4, 'pizza', 'Ik wil een pizza', 1, '2017-01-16', NULL, NULL, 0, 0),
+(5, 'Pizzaboer', 'De pizzaboer wilde niet op locatie bezorgen :( ', NULL, NULL, NULL, NULL, 0, 0),
+(6, 'Pizzaboer', 'De pizzaboer wilde niet op locatie bezorgen :( ', NULL, NULL, NULL, NULL, 0, 0),
+(7, 'sad', ' dsa', NULL, NULL, NULL, NULL, 0, 0),
+(8, 'pietje', 'HIJ VIND HET IRRITANT DAAR ', NULL, NULL, NULL, NULL, 0, 0),
+(9, 'toilet verstopt', 'komt door de verf', NULL, NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -127,9 +135,9 @@ CREATE TABLE `linked_incidents` (
 
 CREATE TABLE `location` (
   `Id` int(11) NOT NULL,
-  `IncidentId` int(11) NOT NULL,
-  `TypeId` int(11) NOT NULL,
-  `Description` text NOT NULL
+  `IncidentId` int(11) DEFAULT NULL,
+  `TypeId` int(11) DEFAULT NULL,
+  `Description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -138,7 +146,12 @@ CREATE TABLE `location` (
 
 INSERT INTO `location` (`Id`, `IncidentId`, `TypeId`, `Description`) VALUES
 (1, 1, 1, 'bij kamer 4.32'),
-(2, 1, 1, 'bovenverdieping');
+(2, 1, 1, 'bovenverdieping'),
+(4, 6, 1, 'Witchworld'),
+(5, 7, 1, 'sad'),
+(6, 8, 1, 'pukkelflet'),
+(7, 1, 1, 'beneden'),
+(8, 9, 1, '1e etage toilet nr 1');
 
 -- --------------------------------------------------------
 
@@ -194,7 +207,9 @@ CREATE TABLE `priority` (
 --
 
 INSERT INTO `priority` (`Id`, `Description`) VALUES
-(1, 'hoog');
+(1, 'laag'),
+(2, 'midden'),
+(3, 'hoog');
 
 -- --------------------------------------------------------
 
@@ -230,7 +245,7 @@ CREATE TABLE `status` (
   `Id` int(11) NOT NULL,
   `IncidentId` int(11) DEFAULT NULL,
   `NameId` int(11) DEFAULT NULL,
-  `Date` datetime DEFAULT CURRENT_TIMESTAMP
+  `Date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -238,10 +253,11 @@ CREATE TABLE `status` (
 --
 
 INSERT INTO `status` (`Id`, `IncidentId`, `NameId`, `Date`) VALUES
-(1, 1, 1, '2016-12-15 00:00:00'),
-(2, 1, 2, '2016-12-20 00:00:00'),
-(55, 1, 1, '2017-01-10 15:22:07'),
-(56, 1, 1, '2017-01-10 23:04:03');
+(1, 1, 1, '2016-12-15'),
+(2, 2, 2, '2016-12-20'),
+(3, 3, 3, '2016-12-20'),
+(4, 4, 4, '2016-12-20'),
+(10, 9, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -259,8 +275,10 @@ CREATE TABLE `status_name` (
 --
 
 INSERT INTO `status_name` (`Id`, `Name`) VALUES
-(1, 'bezig'),
-(2, 'klaar');
+(1, 'nieuw'),
+(2, 'bezig'),
+(3, 'in de wacht'),
+(4, 'afgerond');
 
 -- --------------------------------------------------------
 
@@ -415,7 +433,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT voor een tabel `category`
 --
 ALTER TABLE `category`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT voor een tabel `comment`
 --
@@ -425,7 +443,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT voor een tabel `incident`
 --
 ALTER TABLE `incident`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT voor een tabel `incident_user`
 --
@@ -440,7 +458,7 @@ ALTER TABLE `linked_incidents`
 -- AUTO_INCREMENT voor een tabel `location`
 --
 ALTER TABLE `location`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT voor een tabel `location_type`
 --
@@ -455,7 +473,7 @@ ALTER TABLE `photo_incident`
 -- AUTO_INCREMENT voor een tabel `priority`
 --
 ALTER TABLE `priority`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT voor een tabel `responsibility`
 --
@@ -470,12 +488,12 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT voor een tabel `status`
 --
 ALTER TABLE `status`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT voor een tabel `status_name`
 --
 ALTER TABLE `status_name`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT voor een tabel `user`
 --
