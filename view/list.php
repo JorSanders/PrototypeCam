@@ -1,33 +1,8 @@
 <?php
-$IncidentNew = array(
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "Sanitair", "25-11-2016", "25", "0", "Marit Besseling", "Kamer 2.45"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "1"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "2"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "3")
-);
-
-$IncidentBusy = array(
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "0"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "1"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "2"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "3")
-);
-
-$IncidentHold = array(
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "0"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "1"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "2"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "3")
-);
-
-$IncidentDone = array(
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "0"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "1"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "2"),
-    array("Wc is kapot", "De Wc tegenover kamer 2.18 is vandaag kapot gegaan en spoelt niet meer door.", "sanitair", "25-11-2016", "25", "3",)
-);
+Require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\controller\incidentController.php";
+$incidentController = new IncidentController();
+$incidentList = $incidentController->selectAllIncidents();
 ?>
-
 <!DOCTYPE html>
 <html lang="nl">
     <head>
@@ -51,7 +26,6 @@ $IncidentDone = array(
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>        
         <![endif]-->
     </head>
-
     <body>
         <!-- De header + Menu -->
         <?php
@@ -59,371 +33,732 @@ $IncidentDone = array(
         ?>
         <div id="background" class="row" >
             <div id="content" class="col-md-12" >
-                <!-- Incidenten status: Nieuw-->
                 <div class="col-md-3" >
+
                     <div class="ListCategory">
-                        <div class="Title">
-                            Nieuwe meldingen
-                        </div>
+                        <div class="Title">Nieuwe meldingen</div>
+                        <div class="BottomLine"></div>
+
+                        <?php
+                        foreach ($incidentList as $incident) {
+                            if ($incident ['Status'][0]['NameId'] === "1") {
+                                if ($incident['PriorityId'] === "1") {
+                                    echo "
+                                        <div class='IncidentPriorityLow'>
+                                            <div class='IncidentTitle'>&nbsp; $incident[Title]
+                                                <table class='table' border='0'>
+                                                    <tr>
+                                                        <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                        <td align='right'> $incident[DateMentioned]</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class='IncidentDescription' >      
+                                                <table class='table' border='0'>
+                                                    <tr>
+                                                        <th width='25%'>Catergorie:</th>
+                                                        <td>" . $incident["Category"]["Name"] . "</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Gemeld door:</th>
+                                                        <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th c>Beschrijving:</th>
+                                                                            <td >$incident[Description]</td>
+                                                                        </tr>
+                                                                        <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                                                    <th>Afgerond op: </th>
+                                                                                    <td>$incident[DateFinished] </td>
+                                                                        </tr>";
+                                    }
+                                    echo"</table>
+                                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                                </div>
+                                                            </div>
+                                                        ";
+                                } elseif ($incident['PriorityId'] === "2") {
+                                    echo "
+                                                            <div class='IncidentPriorityMedium'>
+                                                                <div class='IncidentTitle'>
+                                                                    &nbsp; $incident[Title]
+                                                                    <table class='table' border='0'>
+                                                                        <tr>
+                                                                            <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                                            <td align='right'> $incident[DateMentioned]</td>
+                                                                        </tr>
+                                                                    </table>
+                                            </div>
+                                            <div class='IncidentDescription' >      
+                                                <table class='table' border='0'>
+                                                    <tr>
+                                                        <th width='25%'>Catergorie:</th>
+                                                        <td>" . $incident["Category"]["Name"] . "</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Gemeld door:</th>
+                                                        <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th c>Beschrijving:</th>
+                                                        <td >$incident[Description]</td>
+                                                    </tr>
+                                                    <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                                <th>Afgerond op: </th>
+                                                                <td>$incident[DateFinished] </td>
+                                                            </tr>";
+                                    }
+                                    echo"</table>
+                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                            </div>
+                                        </div>
+                                    ";
+                                } elseif ($incident['PriorityId'] === "3") {
+                                    echo "
+                                            <div class='IncidentPriorityHigh'>
+                                                <div class='IncidentTitle'>
+                                                    &nbsp; $incident[Title]
+                                                    <table class='table' border='0'>
+                                                        <tr>
+                                                            <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                            <td align='right'> $incident[DateMentioned]</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class='IncidentDescription' >      
+                                                    <table class='table' border='0'>
+                                                        <tr>
+                                                            <th width='25%'>Catergorie:</th>
+                                                            <td>" . $incident["Category"]["Name"] . "</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <th>Gemeld door:</th>
+                                                        <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th c>Beschrijving:</th>
+                                                            <td >$incident[Description]</td>
+                                                        </tr>
+                                                        <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                            <th>Afgerond op: </th>
+                                                            <td>$incident[DateFinished] </td>
+                                                        </tr>";
+                                    }
+                                    echo"</table>
+                                                    <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                </div>
+                                            </div>
+                                        ";
+                                } else {
+                                    echo "
+                                                <div class='IncidentPriority'>
+                                                    <div class='IncidentTitle'>
+                                                        &nbsp; $incident[Title]
+                                                        <table class='table' border='0'>
+                                                            <tr>
+                                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                                <td align='right'> $incident[DateMentioned]</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div class='IncidentDescription' >      
+                                                        <table class='table' border='0'>
+                                                            <tr>
+                                                                <th width='25%'>Catergorie:</th>
+                                                                <td>";
+                                    if (isset($incident["Category"]["Name"])) {
+                                        echo $incident["Category"]["Name"];
+                                    }
+                                    echo "</td> 
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Gemeld door:</th>
+                                                                <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th c>Beschrijving:</th>
+                                                                <td >$incident[Description]</td>
+                                                            </tr>
+                                                            <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                                        <th>Afgerond op: </th>
+                                                                        <td>$incident[DateFinished] </td>
+                                                                    </tr>";
+                                    }
+                                    echo"</table>
+                                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                    </div>
+                                                    </div>
+                                                
+                                            ";
+                                }
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="col-md-3" >
+
+                    <div class="ListCategory">
+                        <div class="Title">In de wacht</div>
                         <div class="BottomLine"></div>
                         <?php
-                        foreach ($IncidentNew as $IncidentDetail) {
-                            if ($IncidentDetail[5] === "1") {
-                                echo "
-                                <div class='IncidentPriorityLow'>
-                                    <div class='IncidentTitle'>
-                                        $IncidentDetail[0]
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
-                                        <input class='btn btn-primary btn-danger btn-sm' type='button' value='Verwijderen'>
-                                    </div> 
+                        foreach ($incidentList as $incident) {
+                            if ($incident['Status'][0]['NameId'] === "3") {
+                                if ($incident['PriorityId'] === "1") {
+                                    echo "
+                                                <div class='IncidentPriorityLow'>
+                                                    <div class='IncidentTitle'>
+                                                        &nbsp; $incident[Title]
+                                                        <table class='table' border='0'>
+                                                            <tr>
+                                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                                <td align='right'> $incident[DateMentioned]</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div class='IncidentDescription' >      
+                                                        <table class='table' border='0'>
+                                                            <tr>
+                                                                <th width='25%'>Catergorie:</th>
+                                                                <td>" . $incident["Category"]["Name"] . "</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Gemeld door:</th>
+                                                                <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th c>Beschrijving:</th>
+                                                                <td >$incident[Description]</td>
+                                                            </tr>
+                                                            <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                                        <th>Afgerond op: </th>
+                                                                        <td>$incident[DateFinished] </td>
+                                                            </tr>";
+                                    }
+                                    echo"</table>
+                                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                    </div>
+                                                </div>
+                                            ";
+                                } elseif ($incident['PriorityId'] === "2") {
+                                    echo "
+                                                <div class='IncidentPriorityMedium'>
+                                                    <div class='IncidentTitle'>
+                                                        &nbsp; $incident[Title]
+                                                        <table class='table' border='0'>
+                                                            <tr>
+                                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                                <td align='right'> $incident[DateMentioned]</td>
+                                                            </tr>
+                                                        </table>
                                 </div>
-                             ";
-                            } elseif ($IncidentDetail[5] === "2") {
-                                echo "
-                                <div class='IncidentPriorityMedium'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                                    </div>
+                                <div class='IncidentDescription' >      
+                                    <table class='table' border='0'>
+                                        <tr>
+                                            <th width='25%'>Catergorie:</th>
+                                            <td>" . $incident["Category"]["Name"] . "</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Gemeld door:</th>
+                                            <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                        </tr>
+                                        <tr>
+                                            <th c>Beschrijving:</th>
+                                            <td >$incident[Description]</td>
+                                        </tr>
+                                        <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                    <th>Afgerond op: </th>
+                                                    <td>$incident[DateFinished] </td>
+                                                </tr>";
+                                    }
+                                    echo"</table>
+                                <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
                                 </div>
-                             ";
-                            } elseif ($IncidentDetail[5] === "3") {
-                                echo "
+                            </div>
+                        ";
+                                } elseif ($incident['PriorityId'] === "3") {
+                                    echo "
                                 <div class='IncidentPriorityHigh'>
                                     <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                        &nbsp; $incident[Title]
+                                        <table class='table' border='0'>
+                                            <tr>
+                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                <td align='right'> $incident[DateMentioned]</td>
+                                            </tr>
+                                        </table>
                                     </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                                    </div>
-                                </div>
-                             ";
-                            } else {
-                                echo "
-                                <div class='IncidentPriority'>
-                                    <div class='IncidentTitle'>
-                                         &nbsp; $IncidentDetail[0]
-                                           <table class='table' border='0'>
-                                                <tr>
-                                                    <td>$IncidentDetail[7]</td>
-                                                    <td align='right'> $IncidentDetail[3]</td>
-                                                </tr>
-                                            </table>
-                                    </div>
-                                    
                                     <div class='IncidentDescription' >      
                                         <table class='table' border='0'>
                                             <tr>
                                                 <th width='25%'>Catergorie:</th>
-                                                <td>$IncidentDetail[2]</td>
+                                                <td>" . $incident["Category"]["Name"] . "</td>
                                             </tr>
-                                            
                                             <tr>
-                                                <th>Gemeld door:</th>
-                                                <td>$IncidentDetail[6]</td>
+                                            <th>Gemeld door:</th>
+                                            <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
                                             </tr>
-
                                             <tr>
                                                 <th c>Beschrijving:</th>
-                                                <td >$IncidentDetail[1]</td>
+                                                <td >$incident[Description]</td>
                                             </tr>
-
-                                            <tr>
-                                            <th>Toegewezen aan: </th>
-                                                <td>$IncidentDetail[6] </td>
-                                            </tr>
-                                            <tr>
+                                            <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
                                                 <th>Afgerond op: </th>
-                                                <td>$IncidentDetail[3] </td>
-                                            </tr> 
+                                                <td>$incident[DateFinished] </td>
+                                            </tr>";
+                                    }
+                                    echo"</table>
+                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                    </div>
+                                </div>
+                            ";
+                                } else {
+                                    echo "
+                                    <div class='IncidentPriority'>
+                                        <div class='IncidentTitle'>
+                                            &nbsp; $incident[Title]
+                                            <table class='table' border='0'>
+                                                <tr>
+                                                    <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                    <td align='right'> $incident[DateMentioned]</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class='IncidentDescription' >      
+                                            <table class='table' border='0'>
+                                                <tr>
+                                                    <th width='25%'>Catergorie:</th>
+                                                    <td>" . $incident["Category"]["Name"] . "</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gemeld door:</th>
+                                                    <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                                </tr>
+                                                <tr>
+                                                    <th c>Beschrijving:</th>
+                                                    <td >$incident[Description]</td>
+                                                </tr>
+                                                <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                            <th>Afgerond op: </th>
+                                                            <td>$incident[DateFinished] </td>
+                                                        </tr>";
+                                    }
+                                    echo"</table>
+                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                        </div>
+                                    </div>
+                                ";
+                                }
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="col-md-3" >  
+                    <div class="ListCategory">
+                        <div class="Title">Bezig</div>
+                        <div class="BottomLine"></div>
+                        <?php
+                        foreach ($incidentList as $incident) {
+                            if ($incident['Status'][0]['NameId'] === "2") {
+                                if ($incident['PriorityId'] === "1") {
+                                    echo "
+                                <div class='IncidentPriorityLow'>
+                                    <div class='IncidentTitle'>
+                                        &nbsp; $incident[Title]
+                                        <table class='table' border='0'>
+                                            <tr>
+                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                <td align='right'> $incident[DateMentioned]</td>
+                                            </tr>
                                         </table>
                                     </div>
+                                    <div class='IncidentDescription' >      
+                                        <table class='table' border='0'>
+                                            <tr>
+                                                <th width='25%'>Catergorie:</th>
+                                                <td>" . $incident["Category"]["Name"] . "</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Gemeld door:</th>
+                                                <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                            </tr>
+                                            <tr>
+                                                <th c>Beschrijving:</th>
+                                                <td >$incident[Description]</td>
+                                            </tr>
+                                            <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                        <th>Afgerond op: </th>
+                                                        <td>$incident[DateFinished] </td>
+                                            </tr>";
+                                    }
+                                    echo"</table>
+                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                    </div>
                                 </div>
-                             ";
+                            ";
+                                } elseif ($incident['PriorityId'] === "2") {
+                                    echo "
+                                <div class='IncidentPriorityMedium'>
+                                    <div class='IncidentTitle'>
+                                        &nbsp; $incident[Title]
+                                        <table class='table' border='0'>
+                                            <tr>
+                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                <td align='right'> $incident[DateMentioned]</td>
+                                            </tr>
+                                        </table>
+                </div>
+                <div class='IncidentDescription' >      
+                    <table class='table' border='0'>
+                        <tr>
+                            <th width='25%'>Catergorie:</th>
+                            <td>" . $incident["Category"]["Name"] . "</td>
+                        </tr>
+                        <tr>
+                            <th>Gemeld door:</th>
+                            <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                        </tr>
+                        <tr>
+                            <th c>Beschrijving:</th>
+                            <td >$incident[Description]</td>
+                        </tr>
+                        <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                    <th>Afgerond op: </th>
+                                    <td>$incident[DateFinished] </td>
+                                </tr>";
+                                    }
+                                    echo"</table>
+                <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                </div>
+            </div>
+        ";
+                                } elseif ($incident['PriorityId'] === "3") {
+                                    echo "
+                <div class='IncidentPriorityHigh'>
+                    <div class='IncidentTitle'>
+                        &nbsp; $incident[Title]
+                        <table class='table' border='0'>
+                            <tr>
+                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                <td align='right'> $incident[DateMentioned]</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class='IncidentDescription' >      
+                        <table class='table' border='0'>
+                            <tr>
+                                <th width='25%'>Catergorie:</th>
+                                <td>" . $incident["Category"]["Name"] . "</td>
+                            </tr>
+                            <tr>
+                            <th>Gemeld door:</th>
+                            <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                            </tr>
+                            <tr>
+                                <th c>Beschrijving:</th>
+                                <td >$incident[Description]</td>
+                            </tr>
+                            <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                <th>Afgerond op: </th>
+                                <td>$incident[DateFinished] </td>
+                            </tr>";
+                                    }
+                                    echo"</table>
+                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                    </div>
+                </div>
+            ";
+                                } else {
+                                    echo "
+                    <div class='IncidentPriority'>
+                        <div class='IncidentTitle'>
+                            &nbsp; $incident[Title]
+                            <table class='table' border='0'>
+                                <tr>
+                                    <td>" . $incident["Location"][0]["Description"] . "</td>
+                                    <td align='right'> $incident[DateMentioned]</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class='IncidentDescription' >      
+                            <table class='table' border='0'>
+                                <tr>
+                                    <th width='25%'>Catergorie:</th>
+                                    <td>" . $incident["Category"]["Name"] . "</td>
+                                </tr>
+                                <tr>
+                                    <th>Gemeld door:</th>
+                                    <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                </tr>
+                                <tr>
+                                    <th c>Beschrijving:</th>
+                                    <td >$incident[Description]</td>
+                                </tr>
+                                <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                            <th>Afgerond op: </th>
+                                            <td>$incident[DateFinished] </td>
+                                        </tr>";
+                                    }
+                                    echo"</table>
+                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                        </div>
+                    </div>
+                ";
+                                }
                             }
                         }
                         ?>
                     </div>
                 </div>
-
-                <!-- Incidenten status: BEZIG-->
                 <div class="col-md-3" >
                     <div class="ListCategory">
-                        <div class="Title">
-                            Bezig
-                        </div>
+                        <div class="Title">Afgerond</div>
                         <div class="BottomLine"></div>
                         <?php
-                        foreach ($IncidentNew as $IncidentDetail) {
-                            if ($IncidentDetail[5] === "1") {
-
-                                echo "
-                                <div class='IncidentPriorityLow'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
+                        foreach ($incidentList as $incident) {
+                            if ($incident['Status'][0]['NameId'] === "4") {
+                                if ($incident['PriorityId'] === "1") {
+                                    echo "
+                                                <div class='IncidentPriorityLow'>
+                                                    <div class='IncidentTitle'>
+                                                        &nbsp; $incident[Title]
+                                                        <table class='table' border='0'>
+                                                            <tr>
+                                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                                <td align='right'> $incident[DateMentioned]</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div class='IncidentDescription' >      
+                                                        <table class='table' border='0'>
+                                                            <tr>
+                                                                <th width='25%'>Catergorie:</th>
+                                                                <td>" . $incident["Category"]["Name"] . "</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Gemeld door:</th>
+                                                                <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th c>Beschrijving:</th>
+                                                                <td >$incident[Description]</td>
+                                                            </tr>
+                                                            <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                                        <th>Afgerond op: </th>
+                                                                        <td>$incident[DateFinished] </td>
+                                                            </tr>";
+                                    }
+                                    echo"</table>
+                                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                                    </div>
+                                                </div>
+                                            ";
+                                } elseif ($incident['PriorityId'] === "2") {
+                                    echo "
+                                                <div class='IncidentPriorityMedium'>
+                                                    <div class='IncidentTitle'>
+                                                        &nbsp; $incident[Title]
+                                                        <table class='table' border='0'>
+                                                            <tr>
+                                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                                <td align='right'> $incident[DateMentioned]</td>
+                                                            </tr>
+                                                        </table>
                                 </div>
-                                 
-                             ";
-                            } elseif ($IncidentDetail[5] === "2") {
-                                echo "
-                                <div class='IncidentPriorityMedium'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
+                                <div class='IncidentDescription' >      
+                                    <table class='table' border='0'>
+                                        <tr>
+                                            <th width='25%'>Catergorie:</th>
+                                            <td>" . $incident["Category"]["Name"] . "</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Gemeld door:</th>
+                                            <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                        </tr>
+                                        <tr>
+                                            <th c>Beschrijving:</th>
+                                            <td >$incident[Description]</td>
+                                        </tr>
+                                        <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                    <th>Afgerond op: </th>
+                                                    <td>$incident[DateFinished] </td>
+                                                </tr>";
+                                    }
+                                    echo"</table>
+                                <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
                                 </div>
-                                 
-                             ";
-                            } elseif ($IncidentDetail[5] === "3") {
-                                echo "
+                            </div>
+                        ";
+                                } elseif ($incident['PriorityId'] === "3") {
+                                    echo "
                                 <div class='IncidentPriorityHigh'>
                                     <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                                        &nbsp; $incident[Title]
+                                        <table class='table' border='0'>
+                                            <tr>
+                                                <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                <td align='right'> $incident[DateMentioned]</td>
+                                            </tr>
+                                        </table>
                                     </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                            } else {
-                                echo "
-                                <div class='IncidentPriority'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-
-                <!-- Incidenten status: IN DE WACHT-->
-                <div class="col-md-3" >
-                    <div class="ListCategory">
-                        <div class="Title">
-                            In de wacht
-                        </div>
-                        <div class="BottomLine"></div>
-                        <?php
-                        foreach ($IncidentNew as $IncidentDetail) {
-                            if ($IncidentDetail[5] === "1") {
-
-                                echo "
-                                <div class='IncidentPriorityLow'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
+                                    <div class='IncidentDescription' >      
+                                        <table class='table' border='0'>
+                                            <tr>
+                                                <th width='25%'>Catergorie:</th>
+                                                <td>" . $incident["Category"]["Name"] . "</td>
+                                            </tr>
+                                            <tr>
+                                            <th>Gemeld door:</th>
+                                            <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                            </tr>
+                                            <tr>
+                                                <th c>Beschrijving:</th>
+                                                <td >$incident[Description]</td>
+                                            </tr>
+                                            <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                <th>Afgerond op: </th>
+                                                <td>$incident[DateFinished] </td>
+                                            </tr>";
+                                    }
+                                    echo"</table>
+                                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
                                     </div>
                                 </div>
-                                 
-                             ";
-                            } elseif ($IncidentDetail[5] === "2") {
-                                echo "
-                                <div class='IncidentPriorityMedium'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
+                            ";
+                                } else {
+                                    echo "
+                                    <div class='IncidentPriority'>
+                                        <div class='IncidentTitle'>
+                                            &nbsp; $incident[Title]
+                                            <table class='table' border='0'>
+                                                <tr>
+                                                    <td>" . $incident["Location"][0]["Description"] . "</td>
+                                                    <td align='right'> $incident[DateMentioned]</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class='IncidentDescription' >      
+                                            <table class='table' border='0'>
+                                                <tr>
+                                                    <th width='25%'>Catergorie:</th>
+                                                    <td>" . $incident["Category"]["Name"] . "</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gemeld door:</th>
+                                                    <td>";
+                                    if (isset($incident["Users"])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    }
+                                    echo " </td>
+                                                </tr>
+                                                <tr>
+                                                    <th c>Beschrijving:</th>
+                                                    <td >$incident[Description]</td>
+                                                </tr>
+                                                <tr>";
+                                    if (isset($incident['DateFinished'])) {
+                                        echo "<tr>
+                                                            <th>Afgerond op: </th>
+                                                            <td>$incident[DateFinished] </td>
+                                                        </tr>";
+                                    }
+                                    echo"</table>
+                                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href='./edit.php'> Aanpassen</a>
+                                        </div>
                                     </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                            } elseif ($IncidentDetail[5] === "3") {
-                                echo "
-                                <div class='IncidentPriorityHigh'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                            } else {
-                                echo "
-                                <div class='IncidentPriority'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-
-                <!-- Incidenten status: AFGEROND-->
-                <div class="col-md-3" >
-                    <div class="ListCategory">
-                        <div class="Title">
-                            Afgerond
-                        </div>
-                        <div class="BottomLine"></div>
-                        <?php
-                        foreach ($IncidentNew as $IncidentDetail) {
-                            if ($IncidentDetail[5] === "1") {
-
-                                echo "
-                                <div class='IncidentPriorityLow'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                            } elseif ($IncidentDetail[5] === "2") {
-                                echo "
-                                <div class='IncidentPriorityMedium'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                            } elseif ($IncidentDetail[5] === "3") {
-                                echo "
-                                <div class='IncidentPriorityHigh'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
-                            } else {
-                                echo "
-                                <div class='IncidentPriority'>
-                                    <div class='IncidentTitle'>
-                                        <font color='#0488A3'>$IncidentDetail[0]</font>
-                                    </div>
-                                    <div class='IncidentDescription'>
-                                        <h4>Beschrijving: </h4>
-                                        $IncidentDetail[1] 
-                                        <h4>Soort Incident:</h4>
-                                        $IncidentDetail[2] 
-                                        <h4>Datum waarop incident is gemeld:</h4>
-                                        $IncidentDetail[3] 
-                       
-                                    </div>
-                                </div>
-                                 
-                             ";
+                                ";
+                                }
                             }
                         }
                         ?>
@@ -432,11 +767,10 @@ $IncidentDone = array(
 
             </div>
 
-        </div>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="../js/bootstrap.min.js"></script>
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>
