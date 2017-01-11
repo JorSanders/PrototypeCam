@@ -59,9 +59,9 @@ if ($valid) {
 
     <body>
         <!-- De header + Menu -->
-<?php
-include 'Menu.php';
-?>
+        <?php
+        include 'Menu.php';
+        ?>
 
         <div id="background" class="row" >
             <div id="content" class="col-md-12" >
@@ -79,6 +79,7 @@ include 'Menu.php';
                         Locatie
                         <input required class="form-control input-sm" type="text" placeholder="Locatie" name="LocationDescription" value="<?php echo $locationDescription; ?>"> <br>
                         <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="LocationId" value="1">
+                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="StatusId" value="1">
                         Beschrijving
                         <textarea required rows=10 cols=50 class="form-control input-sm" type="text" placeholder="Beschrijving" name="Description" value="<?php echo $description; ?>"> </textarea> <br><br>
                         Foto
