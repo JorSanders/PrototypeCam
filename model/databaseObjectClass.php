@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "\PrototypeCam\database\queryManager.ph
 
 abstract class databaseObject {
 
-    public $id;
+    protected $id;
     protected $queryManager;
     protected $tableName;
     protected $columnNames;

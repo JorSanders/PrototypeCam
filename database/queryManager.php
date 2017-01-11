@@ -67,7 +67,7 @@ class QueryManager {
             return $this->mysqli->insert_id;
         } else {
             echo "Failed to create row in database<br>"
-            . "Query: $this->sql"
+            //. "Query: $this->sql"
             ;
         }
     }
@@ -99,7 +99,7 @@ class QueryManager {
             return true;
         } else {
             echo "Failed to execute update statement<br>"
-            . "Query: $this->sql"
+            //. "Query: $this->sql"
             ;
         }
     }

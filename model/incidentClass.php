@@ -174,55 +174,63 @@ class Incident extends databaseObject {
 
         /* update the status */
         if (isset($properties["StatusId"])) {
-            /* checks if the proerties are set */
-            if (!isset($this->properties)) {
-                $this->properties = $this->getProperties();
-            }
-            /* get the latest status */
-            $latest = array_search(max($this->properties["Status"]), $this->properties["Status"]);
-
-            if (isset($this->properties["Status"][$latest]["NameId"])) {
-                /* checks if the status has changed */
-                $exists = false;
-                if ($this->properties["Status"][$latest]["NameId"] == $properties["StatusId"]) {
-                    $exists = true;
-                }
-            }
-            /* create new status and set the values */
-            if ($exists) {
-                $status = new Status();
-                $statusProperties["IncidentId"] = $this->id;
-                $statusProperties["NameId"] = $properties["StatusId"];
-                $status->setProperties($statusProperties);
-            }
+            $this->updateStatus($properties);
         }
-        
+
         /* update the location */
         if (isset($properties["LocationId"]) &&
                 isset($properties["LocationDescription"])) {
-            /* checks if the proerties are set */
-            if (!isset($this->properties)) {
-                $this->properties = $this->getProperties();
-            }
+            $this->updateLocation($properties);
+        }
+    }
 
-            /* check if location already exists */
-            if (isset($this->properties["Location"])) {
-                $exists = false;
-                foreach ($this->properties["Location"] as $location) {
-                    if ($location["Description"] === $properties["LocationDescription"]) {
-                        $exists = true;
-                    }
+    private function updateStatus($properties) {
+        /* checks if the proerties are set */
+        if (!isset($this->properties)) {
+            $this->properties = $this->getProperties();
+        }
+        /* get the latest status */
+        $latest = array_search(max($this->properties["Status"]), $this->properties["Status"]);
+
+        if (isset($this->properties["Status"][$latest]["NameId"])) {
+            /* checks if the status has changed */
+            $exists = false;
+            if ($this->properties["Status"][$latest]["NameId"] == $properties["StatusId"]) {
+                $exists = true;
+            }
+        }
+        /* create new status and set the values */
+        if (!$exists) {
+            $status = new Status();
+            $statusProperties["IncidentId"] = $this->id;
+            $statusProperties["NameId"] = $properties["StatusId"];
+            $status->setProperties($statusProperties);
+        }
+    }
+
+    private function updateLocation($properties) {
+        /* checks if the proerties are set */
+        if (!isset($this->properties)) {
+            $this->properties = $this->getProperties();
+        }
+
+        /* check if location already exists */
+        if (isset($this->properties["Location"])) {
+            $exists = false;
+            foreach ($this->properties["Location"] as $location) {
+                if ($location["Description"] === $properties["LocationDescription"]) {
+                    $exists = true;
                 }
             }
-            /* if it doesnt exist update the location */
-            if ($exists) {
-                $location = new Location();
-                $location->id;
-                $locationProperties["IncidentId"] = $this->id;
-                $locationProperties["TypeId"] = $properties["LocationId"];
-                $locationProperties["Description"] = $properties["LocationDescription"];
-                $location->setProperties($locationProperties);
-            }
+        }
+        /* if it doesnt exist update the location */
+        if (!$exists) {
+            $location = new Location();
+            $location->id;
+            $locationProperties["IncidentId"] = $this->id;
+            $locationProperties["TypeId"] = $properties["LocationId"];
+            $locationProperties["Description"] = $properties["LocationDescription"];
+            $location->setProperties($locationProperties);
         }
     }
 
