@@ -72,7 +72,6 @@ include 'Menu.php';
                     <p>(vul hier extra tekst bij)</p>
                 </div>
                 <div class="col-md-4" id="NewReport">
-                    <br><br><br><br> 
                     <!-- Het meldingsformulier -->
                     <form action="" method="GET">
                         Onderwerp
@@ -81,7 +80,7 @@ include 'Menu.php';
                         <input required class="form-control input-sm" type="text" placeholder="Locatie" name="LocationDescription" value="<?php echo $locationDescription; ?>"> <br>
                         <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="LocationId" value="1">
                         Beschrijving
-                        <input required class="form-control input-sm" type="text" placeholder="Beschrijving" name="Description" value="<?php echo $description; ?>"> <br>
+                        <textarea required rows=10 cols=50 class="form-control input-sm" type="text" placeholder="Beschrijving" name="Description" value="<?php echo $description; ?>"> </textarea> <br><br>
                         Foto
                         <input class="form-control input-sm" type="file" placeholder="Upload foto" name="Photo" value="<?php echo $photo; ?>"> <br>
                         Email
