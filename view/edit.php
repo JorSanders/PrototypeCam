@@ -25,13 +25,12 @@ if (isset($_GET["Description"])) {
     $description = $incident["Description"];
     $valid = false;
 }
-if (isset($_GET["Status"])) {
-    $status = $_GET["Status"];
+if (isset($_GET["StatusId"])) {
+    $status = $_GET["StatusId"];
 } else {
     $status = $incident["Status"][0]["NameId"];
     $valid = false;
 }
-
 
 if ($valid) {
     $properties = $_GET;
@@ -75,17 +74,16 @@ if ($valid) {
                         Onderwerp
                         <input required class="form-control input-sm" type="text" placeholder="Onderwerp" name="Title" value="<?php echo $title; ?>"> <br>
                         Status<br>
-                        <select name="Status">
-                            <option value="1">In de wacht</option>
-                            <option value="2">Bezig</option>
-                            <option value="3">Afgerond</option>
+                        <select name="StatusId">
+                            <option value=1>In de wacht</option>
+                            <option value=2>Bezig</option>
+                            <option value=3>Afgerond</option>
                         </select>
                         <br>
                         Locatie
                         <input required class="form-control input-sm" type="text" placeholder="Locatie" name="LocationDescription" value="<?php echo $locationDescription; ?>"> <br>
-                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="LocationId" value="1">
-                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="StatusId" value="1">
-                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="id" value="<?php echo $_GET['id']; ?>">
+                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="LocationId" value=1>
+                        <input class="form-control input-sm" type="hidden" placeholder="Locatie" name="id" value=<?php echo $_GET['id']; ?>>
                         Beschrijving
                         <textarea required rows=10 cols=50 class="form-control input-sm" type="text" placeholder="Beschrijving" name="Description"><?php echo $description; ?></textarea> <br><br>
 
