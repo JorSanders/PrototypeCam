@@ -58,25 +58,26 @@ function printCatagory($title, $incidentList, $priorityId) {
             foreach ($incidentList as $incident) {
 
                 if (is_array($incident["Status"])) {
+                } else {
+                    $incident["Status"][0]["NameId"] = 0;
+                }
                     $latest = array_search(max($incident["Status"]), $incident["Status"]);
 
-
-                    if ($incident["Status"][$latest]["NameId"] != $priorityId) {
-                        unset($incident);
-                        continue;
-                    }
-                    if ($incident["Status"][$latest]["NameId"] === "1") {
-                        $priority = "IncidentPriorityLow";
-                    } elseif ($incident["Status"][$latest]["NameId"] === "2") {
-                        $priority = "IncidentPriorityMedium";
-                    } elseif ($incident["Status"][$latest]["NameId"] === "3") {
-                        $priority = "IncidentPriorityHigh";
-                    }
+                if ($incident["Status"][$latest]["NameId"] != $priorityId) {
+                    unset($incident);
+                    continue;
+                }
+                if ($incident["Status"][$latest]["NameId"] === "1") {
+                    $priority = "IncidentPriorityLow";
+                } elseif ($incident["Status"][$latest]["NameId"] === "2") {
+                    $priority = "IncidentPriorityMedium";
+                } elseif ($incident["Status"][$latest]["NameId"] === "3") {
+                    $priority = "IncidentPriorityHigh";
                 } else {
                     $priority = "IncidentPriority";
                 }
                 ?>
-
+                
                 <div class= <?php echo $priority ?> >
                     <div class='IncidentTitle'><?php echo $incident['Title'] ?>
                         <table class='table' border='0'>
