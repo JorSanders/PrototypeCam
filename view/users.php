@@ -39,7 +39,7 @@ $User = array(
 
         <!-- De header + Menu -->
         <?php
-        include 'Menu.php';
+        require_once '../includes/menu.php';
         ?>
 
         <div id="background" class="row" >
