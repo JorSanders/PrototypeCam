@@ -13,6 +13,7 @@ user.sql 		om de database gebruiker toe te voegen die toegang heeft tot de datab
 
 Dit prototype is ontwikkeld volgens het MVC model.
 Er is gebruik gemaakt van bootstrap voor de opmaak.
+Dit project is een git repository.
 Er is vooral php5 gebruikt
 Verder zijn javascript, HTML5 en MYSQL gebruikt
 
