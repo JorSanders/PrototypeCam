@@ -164,9 +164,6 @@ class Incident extends databaseObject {
     }
 
     public function setProperties($properties) {
-        echo "<pre>";
-        print_r($properties);
-        echo "</pre>";
         foreach ($this->columnNames as $columnName) {
             /* update the incident table */
             if (isset($properties[$columnName])) {
@@ -192,13 +189,11 @@ class Incident extends databaseObject {
         if (!isset($this->properties)) {
             $this->properties = $this->getProperties();
         }
-        echo "test";
+        
         /* get the latest status */
         $exists = false;
         if (isset($this->properties["Status"])) {
-            echo "test";
             $latest = array_search(max($this->properties["Status"]), $this->properties["Status"]);
-
             if (isset($this->properties["Status"][$latest]["NameId"])) {
                 /* checks if the status has changed */
                 if ($this->properties["Status"][$latest]["NameId"] == $properties["StatusId"]) {
@@ -208,7 +203,6 @@ class Incident extends databaseObject {
         }
         /* create new status and set the values */
         if (!$exists) {
-            echo "test";
             $status = new Status();
             $statusProperties["IncidentId"] = $this->id;
             $statusProperties["NameId"] = $properties["StatusId"];
@@ -225,7 +219,7 @@ class Incident extends databaseObject {
         /* check if location already exists */
         $exists = false;
         if (isset($this->properties["Location"])) {
-            if (is_array($this->properties["Location"])) {                
+            if (is_array($this->properties["Location"])) {
                 foreach ($this->properties["Location"] as $location) {
                     if ($location["Description"] === $properties["LocationDescription"]) {
                         $exists = true;

@@ -35,7 +35,7 @@ if (isset($_GET["StatusId"])) {
 if ($valid) {
     $properties = $_GET;
     $incidentController->updateIncident($properties, $incident["Id"]);
-    //header("location: list.php");
+    header("location: list.php");
 }
 ?>
 <html lang="nl">
@@ -75,8 +75,8 @@ if ($valid) {
                         <input required class="form-control input-sm" type="text" placeholder="Onderwerp" name="Title" value="<?php echo $title; ?>"> <br>
                         Status<br>
                         <select name="StatusId">
-                            <option value=1>In de wacht</option>
-                            <option value=2>Bezig</option>
+                            <option value=1>Bezig</option>
+                            <option value=2>On Hold</option>
                             <option value=3>Afgerond</option>
                         </select>
                         <br>

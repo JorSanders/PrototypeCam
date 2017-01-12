@@ -56,16 +56,22 @@ function printCatagory($title, $incidentList, $priorityId) {
 
             <?php
             foreach ($incidentList as $incident) {
-                if ($incident['PriorityId'] != $priorityId) {
-                    unset($incident);
-                    continue;
-                }
-                if ($incident['PriorityId'] === "1") {
-                    $priority = "IncidentPriorityLow";
-                } elseif ($incident['PriorityId'] === "2") {
-                    $priority = "IncidentPriorityMedium";
-                } elseif ($incident['PriorityId'] === "3") {
-                    $priority = "IncidentPriorityHigh";
+
+                if (is_array($incident["Status"])) {
+                    $latest = array_search(max($incident["Status"]), $incident["Status"]);
+
+
+                    if ($incident["Status"][$latest]["NameId"] != $priorityId) {
+                        unset($incident);
+                        continue;
+                    }
+                    if ($incident["Status"][$latest]["NameId"] === "1") {
+                        $priority = "IncidentPriorityLow";
+                    } elseif ($incident["Status"][$latest]["NameId"] === "2") {
+                        $priority = "IncidentPriorityMedium";
+                    } elseif ($incident["Status"][$latest]["NameId"] === "3") {
+                        $priority = "IncidentPriorityHigh";
+                    }
                 } else {
                     $priority = "IncidentPriority";
                 }

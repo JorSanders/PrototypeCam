@@ -41,7 +41,7 @@ abstract class databaseObject {
         /* if the columnname is set in the properties update it */
         foreach ($this->columnNames as $columnName) {
             if (isset($properties[$columnName])) {
-                if (is_string($properties[$columnName])){
+                if (!is_numeric($properties[$columnName])){
                     $properties[$columnName] = "'" . $properties[$columnName] . "'";
                 }
                 $sqlProperties[$columnName] = "$columnName = $properties[$columnName]";
