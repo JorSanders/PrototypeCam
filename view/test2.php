@@ -33,80 +33,7 @@ $incidentList = $incidentController->selectAllIncidents();
         ?>
         <div id="background" class="row" >
             <div id="content" class="col-md-12" >
-                <div class="col-md-3" >
-                    <div class="ListCategory">
-                        <div class="Title">Nieuwe meldingen</div>
-                        <div class="BottomLine"></div>
-                    </div>
-                </div>
-
-                <?php
-                foreach ($incidentList as $incident) {
-                    if ($incident['PriorityId'] === "1") {
-                        $priority = "IncidentPriorityLow";
-                    } elseif ($incident['PriorityId'] === "2") {
-                        $priority = "IncidentPriorityMedium";
-                    } elseif ($incident['PriorityId'] === "3") {
-                        $priority = "IncidentPriorityHigh";
-                    } else {
-                        $priority = "IncidentPriority";
-                    }
-                    ?>
-
-                    <div class= <?php echo $priority ?> >
-                        <div class='IncidentTitle'><?php echo $incident['Title'] ?>
-                            <table class='table' border='0'>
-                                <tr>
-                                    <td> <?php echo $incident["Location"][0]['Description'] ?> </td>
-                                    <td align='right'> <?php echo $incident['DateMentioned'] ?></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class='IncidentDescription' >      
-                            <table class='table' border='0'>
-                                <tr>
-                                    <th width='25%'>Categorie:</th>
-                                    <td>
-                                        <?php
-                                        if (isset($incident['Category']['Name'])) {
-                                            echo $incident['Category']['Name'];
-                                        } else {
-                                            echo "Onbekend";
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Gemeld door:</th>
-                                    <td>
-                                        <?php
-                                        if (isset($incident['Users'][0]['Firstname'])) {
-                                            echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
-                                        } else {
-                                            echo "Anoniem";
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th c>Beschrijving:</th>
-                                    <td > <?php echo $incident['Description'] ?> </td>
-                                </tr>
-                                <tr>
-                                    <?php if (isset($incident['DateFinished'])) { ?>
-                                    <tr>
-                                        <th>Afgerond op: </th>
-                                        <td><?php echo $incident['DateFinished'] ?> </td>
-                                    </tr>
-                                <?php } ?>
-                            </table>
-                            <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href="./edit.php?id=<?php echo $incident['Id'] ?>">Aanpassen</a>
-
-                        </div>
-                    </div>
-
-                <?php } ?>
-
+                <?php printCatagory("Nieuwe meldingen"); ?>
             </div>
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -115,3 +42,83 @@ $incidentList = $incidentController->selectAllIncidents();
         <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>
+<?php
+
+function printCatagory($title) {
+    ?>
+    <div class="col-md-3" >
+        <div class="ListCategory">
+            <div class="Title"><?php $title ?></div>
+            <div class="BottomLine"></div>
+
+            <?php
+            foreach ($incidentList as $incident) {
+                if ($incident['PriorityId'] === "1") {
+                    $priority = "IncidentPriorityLow";
+                } elseif ($incident['PriorityId'] === "2") {
+                    $priority = "IncidentPriorityMedium";
+                } elseif ($incident['PriorityId'] === "3") {
+                    $priority = "IncidentPriorityHigh";
+                } else {
+                    $priority = "IncidentPriority";
+                }
+                ?>
+
+                <div class= <?php echo $priority ?> >
+                    <div class='IncidentTitle'><?php echo $incident['Title'] ?>
+                        <table class='table' border='0'>
+                            <tr>
+                                <td> <?php echo $incident["Location"][0]['Description'] ?> </td>
+                                <td align='right'> <?php echo $incident['DateMentioned'] ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class='IncidentDescription' >      
+                        <table class='table' border='0'>
+                            <tr>
+                                <th width='25%'>Categorie:</th>
+                                <td>
+                                    <?php
+                                    if (isset($incident['Category']['Name'])) {
+                                        echo $incident['Category']['Name'];
+                                    } else {
+                                        echo "Onbekend";
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Gemeld door:</th>
+                                <td>
+                                    <?php
+                                    if (isset($incident['Users'][0]['Firstname'])) {
+                                        echo $incident['Users'][0]['Firstname'] . "&nbsp" . $incident['Users'][0]['Surname'];
+                                    } else {
+                                        echo "Anoniem";
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th c>Beschrijving:</th>
+                                <td > <?php echo $incident['Description'] ?> </td>
+                            </tr>
+                            <tr>
+                                <?php if (isset($incident['DateFinished'])) { ?>
+                                <tr>
+                                    <th>Afgerond op: </th>
+                                    <td><?php echo $incident['DateFinished'] ?> </td>
+                                </tr>
+                            <?php } ?>
+                        </table>
+                        <br><br><a aria-pressed='true' class='btn btn-info btn-sm' href="./edit.php?id=<?php echo $incident['Id'] ?>">Aanpassen</a>
+
+                    </div>
+                </div>
+
+            <?php } ?>
+        </div>
+    </div>
+    <?php
+}
+?>
