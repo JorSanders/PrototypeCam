@@ -33,7 +33,10 @@ $incidentList = $incidentController->selectAllIncidents();
         ?>
         <div id="background" class="row" >
             <div id="content" class="col-md-12" >
-                <?php printCatagory("Nieuwe meldingen"); ?>
+                <?php printCatagory("Nieuwe meldingen", $incidentList,0); ?>
+                <?php printCatagory("Bezig", $incidentList,1); ?>
+                <?php printCatagory("On Hold", $incidentList,2); ?>
+                <?php printCatagory("Afgerond", $incidentList,3); ?>
             </div>
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -44,15 +47,19 @@ $incidentList = $incidentController->selectAllIncidents();
 </html>
 <?php
 
-function printCatagory($title) {
+function printCatagory($title, $incidentList, $priorityId) {
     ?>
     <div class="col-md-3" >
         <div class="ListCategory">
-            <div class="Title"><?php $title ?></div>
+            <div class="Title"><?php echo $title; ?></div>
             <div class="BottomLine"></div>
 
             <?php
             foreach ($incidentList as $incident) {
+                if ($incident['PriorityId'] != $priorityId) {
+                    unset($incident);   
+                    continue;
+                }
                 if ($incident['PriorityId'] === "1") {
                     $priority = "IncidentPriorityLow";
                 } elseif ($incident['PriorityId'] === "2") {
