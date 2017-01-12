@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 12 jan 2017 om 14:10
+-- Gegenereerd op: 11 jan 2017 om 20:07
 -- Serverversie: 10.1.19-MariaDB
 -- PHP-versie: 5.6.24
 
@@ -86,9 +86,13 @@ CREATE TABLE `incident` (
 INSERT INTO `incident` (`Id`, `Title`, `Description`, `CategoryId`, `DateMentioned`, `DateFinished`, `PriorityId`, `Archived`, `Deleted`) VALUES
 (1, 'wc kapot', 'spoelt niet door', 1, '2016-12-07', NULL, 1, 1, 0),
 (2, 'lamp', 'het is een lamp', 1, '2017-01-19', NULL, 2, 0, 0),
-(9, 'toilet verstopt', 'komt door de verf', 2, '2017-01-15', '2017-01-20', 3, 0, 0),
-(10, 'Thee', 'De thee is op.', NULL, '2017-01-20', NULL, NULL, 0, 0),
-(11, 'Een plafond is kapot', 'Het plafond stuk is naar beneden gevallen', NULL, '2017-01-09', NULL, NULL, 0, 0);
+(3, 'appel', 'Ik wil een appel', 1, '2017-01-16', NULL, 3, 0, 0),
+(4, 'pizza', 'Ik wil een pizza', 1, '2017-01-16', NULL, NULL, 0, 0),
+(5, 'Pizzaboer', 'De pizzaboer wilde niet op locatie bezorgen :( ', NULL, NULL, NULL, NULL, 0, 0),
+(6, 'Pizzaboer', 'De pizzaboer wilde niet op locatie bezorgen :( ', NULL, NULL, NULL, NULL, 0, 0),
+(7, 'sad', ' dsa', NULL, NULL, NULL, NULL, 0, 0),
+(8, 'pietje', 'HIJ VIND HET IRRITANT DAAR ', NULL, NULL, NULL, NULL, 0, 0),
+(9, 'toilet verstopt', 'komt door de verf', NULL, NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -143,11 +147,11 @@ CREATE TABLE `location` (
 INSERT INTO `location` (`Id`, `IncidentId`, `TypeId`, `Description`) VALUES
 (1, 1, 1, 'bij kamer 4.32'),
 (2, 1, 1, 'bovenverdieping'),
+(4, 6, 1, 'Witchworld'),
+(5, 7, 1, 'sad'),
+(6, 8, 1, 'pukkelflet'),
 (7, 1, 1, 'beneden'),
-(8, 9, 1, '1e etage toilet nr 1'),
-(9, 2, 1, 'Witchworld'),
-(10, 10, 1, 'Kantine/Keukentje'),
-(11, 11, 1, 'Tweede verdieping in de gang');
+(8, 9, 1, '1e etage toilet nr 1');
 
 -- --------------------------------------------------------
 
@@ -251,14 +255,9 @@ CREATE TABLE `status` (
 INSERT INTO `status` (`Id`, `IncidentId`, `NameId`, `Date`) VALUES
 (1, 1, 1, '2016-12-15'),
 (2, 2, 2, '2016-12-20'),
-(11, 1, 2, NULL),
-(12, 1, 3, NULL),
-(13, 2, 3, NULL),
-(14, 1, 2, NULL),
-(15, 9, 3, NULL),
-(16, 2, 1, NULL),
-(18, 10, 2, NULL),
-(19, NULL, NULL, NULL);
+(3, 3, 3, '2016-12-20'),
+(4, 4, 4, '2016-12-20'),
+(10, 9, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -301,9 +300,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Id`, `Firstname`, `Prefix`, `Surname`, `Email`, `Password`) VALUES
-(1, 'Jor', '', 'Alexander', 'Jors@hotmail.com', 'geheim'),
-(2, 'Lennard', '', 'Rocher', 'Lennard@hotmail.com', 'geheim'),
-(3, 'Marit', '', 'Van bommel', 'Marit@hotmail.com', 'geheim');
+(1, 'Jor', '', 'Sanders', 'jorsanders@hotmail.com', 'geheim'),
+(2, 'Lennard', '', 'Peerenboom', 'L.Peerenboom@hotmail.com', 'geheim'),
+(3, 'Marit', '', 'Besseling', 'M.Besseling@hotmail.com', 'geheim');
 
 -- --------------------------------------------------------
 
@@ -444,7 +443,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT voor een tabel `incident`
 --
 ALTER TABLE `incident`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT voor een tabel `incident_user`
 --
@@ -459,7 +458,7 @@ ALTER TABLE `linked_incidents`
 -- AUTO_INCREMENT voor een tabel `location`
 --
 ALTER TABLE `location`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT voor een tabel `location_type`
 --
@@ -489,7 +488,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT voor een tabel `status`
 --
 ALTER TABLE `status`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT voor een tabel `status_name`
 --
