@@ -68,12 +68,12 @@ function printCatagory($title, $incidentList, $statusId) {
                     unset($incident);
                     continue;
                 }
-                if (isset($incident["priority"]["Description"])) {
-                    if ($incident["priority"]["Description"] === "1") {
+                if (isset($incident["PriorityId"])) {
+                    if ($incident["PriorityId"] === "1") {
                         $priority = "IncidentPriorityLow";
-                    } elseif ($incident["priority"]["Description"] === "2") {
+                    } elseif ($incident["PriorityId"] === "2") {
                         $priority = "IncidentPriorityMedium";
-                    } elseif ($incident["priority"]["Description"] === "3") {
+                    } elseif ($incident["PriorityId"] === "3") {
                         $priority = "IncidentPriorityHigh";
                     }
                 } else {
