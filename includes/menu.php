@@ -1,7 +1,7 @@
 <?php
 $menu = [["Home", "index.php"],
     ["Overzichten", "list.php"],
-    ["Statistieken", "Statistics.php"],
+    ["Statistieken", "statistics.php"],
     ["Gebruikers", "users.php"],
 ];
 ?>

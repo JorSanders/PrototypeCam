@@ -4,7 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/PrototypeCam/view/list.php</file>
-            <file>file:/C:/xampp/htdocs/PrototypeCam/view/test.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/view/index.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/controller/incidentController.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/model/photoIncidentClass.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/model/incidentClass.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/view/baseTemplate.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/includes/menu.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/view/edit.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/view/succes.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/view/users.php</file>
+            <file>file:/C:/xampp/htdocs/PrototypeCam/view/statistics.php</file>
         </group>
     </open-files>
 </project-private>
